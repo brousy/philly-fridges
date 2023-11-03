@@ -15,14 +15,16 @@ const addFridge = async (req, res) => {
     }
 };
 
+// delete a fridge from a user
+
 const removeFridge = async (req, res) => {
     try {
         const fridgeUpdate = await User.findOneAndUpdate(
             { _id: req.params.userId },
-            { $pull: {friends: req.params.friendId } },
+            { $pull: {fridges: req.params.fridgeId } },
             { new: true }
         );
-        res.status(200).json(userUpdate);
+        res.status(200).json(fridgeUpdate);
     } catch (error) {
         res.status(404).json({ msg: `No fridges found`, error: error})
     }
