@@ -4,12 +4,13 @@ const { User, Fridge, Item } = require('../models');
 
 const addFridge = async (req, res) => {
     try {
+        const fridge = await Fridge.create(req.body);
         const fridgeUpdate = await User.findOneAndUpdate(
-            { _id: req.params.userId },
-            { $addToSet: { fridges: req.params.fridgeId } },
+            { username: req.params.username },
+            { $addToSet: { fridges: fridge._id } },
             { new: true }
         );
-        res.status(200).json(fridgeUpdate);
+        res.status(200).json({ fridge, fridgeUpdate });
     } catch (error) {
         res.status(404).json({ msg: `No fridges found with the provided id: ${req.params.userId}`, error: error });
     }

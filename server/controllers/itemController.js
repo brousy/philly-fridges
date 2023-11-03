@@ -1,4 +1,4 @@
-const { Item, User } =  require('../models');
+const { Item, Fridge, User } =  require('../models');
 
 // Get all items 
 

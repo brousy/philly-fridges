@@ -50,11 +50,14 @@ const updateUser = async (req, res) => {
     }
 };
 
+
+// Delete a user and associated fridges
+
 const deleteUser = async (req, res) => {
     try {
-        const userDelete = await User.findByIdAndDelete({ _id: req.params.userId });
+        const userDelete = await User.findOneAndDelete({ _id: req.params.userId });
 
-        const fridgeDelete = await Fridge.deleteMany({ fridgeId: { $in: userDelete.fridge },
+        const fridgeDelete = await Fridge.deleteMany({ _id: { $in: userDelete.fridge },
     
         });
         res.status(200).json({

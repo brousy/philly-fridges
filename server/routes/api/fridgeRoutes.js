@@ -10,10 +10,10 @@ const {
 // /fridges 
 router.route('/').get(getAllFridges);
 
-// /api/users/:userId/fridges
-router.route('/:userId/fridges').post(addFridge);
+// /api/fridges/:username/fridges
+router.route('/:username').post(addFridge);
 
-// /api/users/:userId/fridges/:fridgeId
-router.route('/:userId/fridges/:fridgeId').delete(deleteFridge).put(updateFridge);
+// /api/fridges/:username/fridges/:fridgeId
+router.route('/:fridgeId').delete(deleteFridge).put(updateFridge);
 
 module.exports = router;
