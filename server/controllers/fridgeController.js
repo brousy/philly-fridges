@@ -25,7 +25,7 @@ const deleteFridge = async (req, res) => {
     } catch (error) {
         res.status(404).json({ msg: `No fridges found`, error: error})
     }
-}
+};
 
 // Update a fridge 
 
@@ -39,7 +39,7 @@ const updateFridge = async (req, res) => {
     } catch (error) {
         res.status(404).json({ msg: `No fridge found with this id`, error: error });
     }
-}
+};
 
 const getAllFridges = async (req,res) => {
     try {
@@ -48,7 +48,17 @@ const getAllFridges = async (req,res) => {
     } catch (error) {
         res.status(404).json({ msg: `No fridges found`, error: error });
     }
-}
+};
+
+const getOneFridge = async (req, res) => {
+    try {
+        const oneFridge = await Fridge.findOne({ _id: req.params.fridgeId })
+        .populate('items');
+        res.status(200).json(oneFridge);
+    } catch (error) {
+        res.status(404).json({ msg: `No fridge found with that name.`, error: error });
+    }
+};
 
 
 
@@ -56,5 +66,6 @@ module.exports = {
     addFridge,
     deleteFridge,
     updateFridge,
-    getAllFridges
+    getAllFridges,
+    getOneFridge
 }

@@ -4,7 +4,8 @@ const {
   addFridge,
   deleteFridge,
   updateFridge,
-  getAllFridges
+  getAllFridges,
+  getOneFridge,
 } = require('../../controllers/fridgeController');
 
 // /fridges 
@@ -14,6 +15,6 @@ router.route('/').get(getAllFridges);
 router.route('/:username').post(addFridge);
 
 // /api/fridges/:username/fridges/:fridgeId
-router.route('/:fridgeId').delete(deleteFridge).put(updateFridge);
+router.route('/:fridgeId').delete(deleteFridge).put(updateFridge).get(getOneFridge);
 
 module.exports = router;
