@@ -1,0 +1,58 @@
+const typeDefs = `
+type Fridge {
+    _id: ID
+    name: String
+    online: Boolean
+    username: String
+    items: [Item]
+}
+
+type Item {
+    _id: ID
+    itemName: String
+    itemQuantity: String
+    isFrozen: String
+    addDate: String
+    expiryDate: String
+    username: String
+    fridgename: String
+}
+
+type User {
+    _id: ID
+    fridges: [Fridge]
+    items: [Item]
+    username: String
+    email: String
+    password: String
+}
+
+type Auth {
+    token: ID!
+    user: User
+}
+
+type Query {
+    items: [Item]!
+    fridges: [Fridge]!
+    users: [User]!
+    fridge(fridge: String!): Fridge
+    userItems(user: String!): User
+    fridgeItems(fridge: String!): Fridge
+    itemId(item: ID!): Item
+}
+
+type Mutation {
+    addFridge(name: String!, online: String!, username: String!): Fridge
+    updateFridge(newName: String!, status: String!): Fridge
+    deleteFridge(fridge: String!): Fridge
+    addItem(itemName: String!, itemQuantity: String!, isFrozen: Boolean!, username: String!, fridgename: String!): Item
+    deleteItem(itemId: ID!): Item
+    updateItem(itemId: ID!, name: String!, quantity: String!): Item
+    addUser(username: String!, email: String!, password: String!): User
+    login(username: String!, password: String!): Auth
+    deleteUser(user: String!): User
+}
+`
+
+module.exports = typeDefs;

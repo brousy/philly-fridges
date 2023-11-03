@@ -11,6 +11,10 @@ const fridgeSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        username: {
+            type: String,
+            required: true
+        },
         items: [
             {
                 type: Schema.Types.ObjectId,
