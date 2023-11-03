@@ -1,33 +1,32 @@
-const mongoose = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
-const { Schema } = mongoose;
-
-const fridgeSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true
+const fridgeSchema = new Schema(
+    {
+        fridgeId: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId(),
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        online: {
+            type: Boolean,
+            default: false,
+        },
+        items: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'item'
+            }
+        ],
     },
-    quantity: {
-        type: Number,
-        min: 0,
-        default: 0
-    },
-    is_frozen: {
-        type: Boolean,
-    },
-    add_date: {
-        type: Date,
-        default: Date.now
-    },
-},
     {
         toJSON: {
-            virtuals: true,
+            getters: true,
         },
     }
-)
+);
 
-
-// 5 days for non frozen
-
+module.exports = model('fridge', fridgeSchema)
