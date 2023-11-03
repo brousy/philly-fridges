@@ -15,7 +15,7 @@ const getAllItems = async (req, res) => {
 
 const getItem = async (req, res) => {
     try {
-        const item = await Item.findOne({ _id: req.params.thoughtId });
+        const item = await Item.findOne({ _id: req.params.itemId });
         res.status(200).json(item);
     } catch (error) {
         res.status(404).json({ msg: `No item(s) found with that id` });
@@ -28,12 +28,12 @@ const createItem = async (req, res) => {
     try {
         const item = await Item.create(req.body);
         const updateUser = await User.findOneAndUpdate(
-            { username: req.body.username },
+            { username: req.body.userId },
             { $addToSet: { items: item._id } },
             { new: true }
         );
         const updateFridge = await Fridge.findOneAndUpdate(
-            { username: req.body.username },
+            { name: req.body.name },
             { $addToSet: { items: item._id } },
             { new: true }
         );
@@ -43,7 +43,27 @@ const createItem = async (req, res) => {
     }
 };
 
+const updateItem = async (req, res) => {
+    try {
+        const item = await Item.findOneAndUpdate(
+            { itemId: req.params.itemId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+        );
+        res.status(200).json(item);
+    } catch (error) {
+        res.status(404).json({ msg: `No items found with this id`, error: error });
+    }
+};
 
+const deleteItem = async (req,res) => {
+    try {
+        const deletedItem = await Item.findByIdAndDelete({ itemId: req.params.itemId });
+        res.status(200).json({ msg: `item deleted!`, deletedItem });
+    } catch (error) {
+        res.status(404).json({ msg: `No items found`, error: error });
+    }
+};
 
 
 module.exports = {
@@ -51,7 +71,7 @@ module.exports = {
     getAllItems,
     getItem,
     createItem,
-    deleteThought,
-    updateThought
+    deleteItem,
+    updateItem
   
   };
