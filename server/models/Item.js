@@ -24,7 +24,7 @@ const itemSchema = new Schema(
         },
         expiryDate: {
             type: Date, 
-            default: (this) => {
+            default: () => {
                 if(this.isFrozen){
                     return new Date(+new Date() + 28 * 24 * 60 * 60 * 1000);
                 } else {

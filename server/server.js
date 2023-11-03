@@ -1,22 +1,17 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const db = require('./config/connection');
+const routes = require('./routes');
+
+const PORT = process.env.port || 3001;
 const app = express();
-const port = process.env.PORT || 3001;
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(routes);
 
+db.once('open', () => {
+    app.listen(PORT, () => {
+        console.log(`API server running on port ${PORT}!`);
+    });
+});
 
-const Fridge = require('./models/fridge');
-const Item = require('./models/item');
-const User = require('./models/user');
-
-app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
-app.get('/send', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/send.html'))
-);
-app.get('/paths', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/paths.html'))
-);
-
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
