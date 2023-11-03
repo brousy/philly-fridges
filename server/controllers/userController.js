@@ -1,10 +1,13 @@
 const { User, Fridge, Item } = require('../models');
+const bcrypt = require('bcrypt');
 
 // Get all users
 
 const getAllUsers = async (req, res) => {
     try {
-        const allUsers = await User.find({});
+        const allUsers = await User.find(
+            {}, {"email": 0, "password": 0} 
+            );
         res.status(200).json(allUsers);
     } catch (error) {
         res.status(404).json({ msg: `No users found`, error: error });
@@ -28,8 +31,10 @@ const getOneUser = async (req, res) => {
 
 const createUser = async (req, res) => {
     try {
-        const newUser = await User.create(req.body);
-        res.status(200).json(newUser);
+        const newUser = req.body;
+        newUser.password = await bcrypt.hash(req.body.password, 10);
+        const userData = await User.create(newUser);
+        res.status(200).json(userData);
     } catch (error) {
         res.status(500).json({ msg: `new user creation was unsuccessful`, error });
     }

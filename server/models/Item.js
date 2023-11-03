@@ -31,6 +31,10 @@ const itemSchema = new Schema(
         username: {
             type: String,
             required: true,
+        },
+        fridgename: {
+            type: String,
+            required: true,
         }
     },
     {

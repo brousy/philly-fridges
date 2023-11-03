@@ -60,8 +60,6 @@ const getOneFridge = async (req, res) => {
     }
 };
 
-
-
 module.exports = {
     addFridge,
     deleteFridge,

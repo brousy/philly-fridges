@@ -28,12 +28,12 @@ const createItem = async (req, res) => {
     try {
         const item = await Item.create(req.body);
         const updateUser = await User.findOneAndUpdate(
-            { _id: req.body.userId },
+            { username: req.body.username },
             { $addToSet: { items: item._id } },
             { new: true }
         );
         const updateFridge = await Fridge.findOneAndUpdate(
-            { _id: req.body.fridgeId },
+            { name: req.body.fridgename },
             { $addToSet: { items: item._id } },
             { new: true }
         );
@@ -55,12 +55,21 @@ const updateItem = async (req, res) => {
     }
 };
 
-const deleteItem = async (req,res) => {
+const deleteItem = async (req, res) => {
     try {
         const deletedItem = await Item.findByIdAndDelete({ _id: req.params.itemId });
         res.status(200).json({ msg: `item deleted!`, deletedItem });
     } catch (error) {
         res.status(404).json({ msg: `No items found`, error: error });
+    }
+};
+
+const oneUserItems = async (req, res) => {
+    try {
+        const userItems = await Item.find({ username: req.params.username });
+        res.status(200).json(userItems);
+    } catch (error) {
+        res.status(404).json({ msg: `No items found matching that username`, error: error });
     }
 };
 
@@ -71,6 +80,7 @@ module.exports = {
     getItem,
     createItem,
     deleteItem,
-    updateItem
+    updateItem,
+    oneUserItems,
   
   };

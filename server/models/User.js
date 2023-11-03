@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
     {
@@ -24,11 +25,17 @@ const userSchema = new Schema(
             type: String,
             required: [true, 'Please provide email'],
             match: [
-                /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+                /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
         'Please provide valid email'
             ],
             unique: true,
         },
+        password: {
+            type: String,
+            required: false,
+            minLength: 8,
+            description: "Password must be at least 8 characters"
+        }
     },
     {
         toJSON: {
