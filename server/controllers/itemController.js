@@ -43,6 +43,8 @@ const createItem = async (req, res) => {
     }
 };
 
+// Update one item by ID. Useful for quantity updates as people remove items. 
+
 const updateItem = async (req, res) => {
     try {
         const item = await Item.findOneAndUpdate(
@@ -55,6 +57,8 @@ const updateItem = async (req, res) => {
     }
 };
 
+// Find an item by ID and delete it
+
 const deleteItem = async (req, res) => {
     try {
         const deletedItem = await Item.findByIdAndDelete({ _id: req.params.itemId });
@@ -63,6 +67,8 @@ const deleteItem = async (req, res) => {
         res.status(404).json({ msg: `No items found`, error: error });
     }
 };
+
+// Get all items for one user
 
 const oneUserItems = async (req, res) => {
     try {

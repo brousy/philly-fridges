@@ -75,11 +75,35 @@ const deleteUser = async (req, res) => {
     }
 };
 
+// login route 
+
+const loginUser = async (req, res) => {
+    try {
+        const userData = await User.findOne({ username: req.body.username });
+        if (!userData) {
+            res.status(404).json({ msg: `Login failure, please try again.` });
+            return;
+        }
+        const validPass = await bcrypt.compare(
+            req.body.password,
+            userData.password
+        );
+        if (!validPass) {
+            res.status(400).json({ msg: `Login failed, please try again.` });
+            return;
+        }
+        res.status(200).json({ msg: `Successful login!` });
+    } catch (error) {
+        res.status(500).json(error);
+    }
+};
+
 module.exports = {
     getAllUsers,
     getOneUser,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    loginUser
 };
 
