@@ -15,7 +15,7 @@ const getAllUsers = async (req, res) => {
 
 const getOneUser = async (req, res) => {
     try {
-        const oneUser = await User.findOne({ _id: req.params.userId})
+        const oneUser = await User.findOne({ userId: req.params.userId})
         .populate('item')
         .populate('fridge');
         res.status(200).json(oneUser);
@@ -40,21 +40,21 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
     try {
         const userUpdate = await User.findOneAndUpdate(
-            { _id: req.params.userId },
+            { userId: req.params.userId },
             { $set: req.body },
             { runValidators: true, new: true }
         );
         res.status(200).json(userUpdate);
-    } catch (err) {
-        res.status(404).json({ msg: `No user found with this id`, err: err });
+    } catch (error) {
+        res.status(404).json({ msg: `No user found with this id`, error: error });
     }
 };
 
 const deleteUser = async (req, res) => {
     try {
-        const userDelete = await User.findByIdAndDelete({ _id: req.params.userId });
+        const userDelete = await User.findByIdAndDelete({ userId: req.params.userId });
 
-        const fridgeDelete = await Fridge.deleteMany({ _id: { $in: userDelete.fridge },
+        const fridgeDelete = await Fridge.deleteMany({ fridgeId: { $in: userDelete.fridge },
     
         });
         res.status(200).json({

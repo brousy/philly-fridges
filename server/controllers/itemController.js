@@ -15,7 +15,7 @@ const getAllItems = async (req, res) => {
 
 const getItem = async (req, res) => {
     try {
-        const item = await Item.findOne({ _id: req.params.itemId });
+        const item = await Item.findOne({ itemId: req.params.itemId });
         res.status(200).json(item);
     } catch (error) {
         res.status(404).json({ msg: `No item(s) found with that id` });
@@ -28,12 +28,12 @@ const createItem = async (req, res) => {
     try {
         const item = await Item.create(req.body);
         const updateUser = await User.findOneAndUpdate(
-            { username: req.body.userId },
+            { userId: req.body.userId },
             { $addToSet: { items: item._id } },
             { new: true }
         );
         const updateFridge = await Fridge.findOneAndUpdate(
-            { name: req.body.name },
+            { fridgeId: req.body.fridgeId },
             { $addToSet: { items: item._id } },
             { new: true }
         );
@@ -47,8 +47,7 @@ const updateItem = async (req, res) => {
     try {
         const item = await Item.findOneAndUpdate(
             { itemId: req.params.itemId },
-            { $set: req.body },
-            { runValidators: true, new: true }
+            { $set: req.body }
         );
         res.status(200).json(item);
     } catch (error) {
