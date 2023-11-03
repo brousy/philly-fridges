@@ -11,13 +11,13 @@ const getAllUsers = async (req, res) => {
     }
 };
 
-// Get one user
+// Get one user '/:userId'
 
 const getOneUser = async (req, res) => {
     try {
-        const oneUser = await User.findOne({ userId: req.params.userId})
-        .populate('item')
-        .populate('fridge');
+        const oneUser = await User.findOne({ _id: req.params.userId })
+        .populate('items')
+        .populate('fridges');
         res.status(200).json(oneUser);
     } catch (error) {
         res.status(404).json({ msg: `User not found with that id` });
@@ -39,8 +39,8 @@ const createUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const userUpdate = await User.findOneAndUpdate(
-            { userId: req.params.userId },
+        const userUpdate = await User.findByIdAndUpdate(
+            { _id: req.params.userId },
             { $set: req.body },
             { runValidators: true, new: true }
         );
@@ -52,7 +52,7 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     try {
-        const userDelete = await User.findByIdAndDelete({ userId: req.params.userId });
+        const userDelete = await User.findByIdAndDelete({ _id: req.params.userId });
 
         const fridgeDelete = await Fridge.deleteMany({ fridgeId: { $in: userDelete.fridge },
     

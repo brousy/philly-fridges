@@ -15,7 +15,7 @@ const getAllItems = async (req, res) => {
 
 const getItem = async (req, res) => {
     try {
-        const item = await Item.findOne({ itemId: req.params.itemId });
+        const item = await Item.findOne({ _id: req.params.itemId });
         res.status(200).json(item);
     } catch (error) {
         res.status(404).json({ msg: `No item(s) found with that id` });
@@ -28,12 +28,12 @@ const createItem = async (req, res) => {
     try {
         const item = await Item.create(req.body);
         const updateUser = await User.findOneAndUpdate(
-            { userId: req.body.userId },
+            { _id: req.body.userId },
             { $addToSet: { items: item._id } },
             { new: true }
         );
         const updateFridge = await Fridge.findOneAndUpdate(
-            { fridgeId: req.body.fridgeId },
+            { _id: req.body.fridgeId },
             { $addToSet: { items: item._id } },
             { new: true }
         );
@@ -46,7 +46,7 @@ const createItem = async (req, res) => {
 const updateItem = async (req, res) => {
     try {
         const item = await Item.findOneAndUpdate(
-            { itemId: req.params.itemId },
+            { _id: req.params.itemId },
             { $set: req.body }
         );
         res.status(200).json(item);
@@ -57,7 +57,7 @@ const updateItem = async (req, res) => {
 
 const deleteItem = async (req,res) => {
     try {
-        const deletedItem = await Item.findByIdAndDelete({ itemId: req.params.itemId });
+        const deletedItem = await Item.findByIdAndDelete({ _id: req.params.itemId });
         res.status(200).json({ msg: `item deleted!`, deletedItem });
     } catch (error) {
         res.status(404).json({ msg: `No items found`, error: error });
