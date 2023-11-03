@@ -14,8 +14,8 @@ type Item {
     isFrozen: String
     addDate: String
     expiryDate: String
-    username: String
-    fridgename: String
+    itemUsername: String
+    itemFridgename: String
 }
 
 type User {
@@ -44,9 +44,9 @@ type Query {
 
 type Mutation {
     addFridge(name: String!, online: String!, username: String!): Fridge
-    updateFridge(newName: String!, status: String!): Fridge
+    updateFridge(name: String!, status: Boolean!): Fridge
     deleteFridge(fridge: String!): Fridge
-    addItem(itemName: String!, itemQuantity: String!, isFrozen: Boolean!, username: String!, fridgename: String!): Item
+    addItem(itemName: String!, itemQuantity: String!, isFrozen: Boolean!, itemUsername: String!, itemFridgename: String!): Item
     deleteItem(itemId: ID!): Item
     updateItem(itemId: ID!, name: String!, quantity: String!): Item
     addUser(username: String!, email: String!, password: String!): User

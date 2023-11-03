@@ -1,4 +1,4 @@
-const { Schema, Types, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const fridgeSchema = new Schema(
     {
@@ -18,7 +18,7 @@ const fridgeSchema = new Schema(
         items: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'item'
+                ref: 'Item'
             }
         ],
     },
@@ -29,4 +29,6 @@ const fridgeSchema = new Schema(
     }
 );
 
-module.exports = model('fridge', fridgeSchema)
+const Fridge = model('fridge', fridgeSchema);
+
+module.exports = Fridge; 

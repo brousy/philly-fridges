@@ -1,4 +1,4 @@
-const { Schema, Types, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema(
     {
@@ -28,22 +28,25 @@ const itemSchema = new Schema(
                 }
             }
         },
-        username: {
+        itemUsername: {
             type: String,
             required: true,
+            trim: true
         },
-        fridgename: {
+        itemFridgename: {
             type: String,
             required: true,
+            trim: true
         }
     },
     {
         toJSON: {
             virtuals: true,
         },
-        id: false,
     }
 );
 
-module.exports = model('item', itemSchema);
+const Item = model('Item', itemSchema);
+
+module.exports = Item;
 

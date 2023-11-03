@@ -6,13 +6,13 @@ const userSchema = new Schema(
         fridges: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'fridge',
+                ref: 'Fridge',
             },
         ],
         items: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'item',
+                ref: 'Item',
             },
         ],
         username: {
@@ -36,12 +36,6 @@ const userSchema = new Schema(
             minLength: 8,
             description: "Password must be at least 8 characters"
         }
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        id: false,
     }
 );
 
@@ -60,4 +54,6 @@ userSchema.pre('save', async function (next) {
     return bcrypt.compare(password, this.password);
   };
   
-module.exports = model('user', userSchema);
+const User = model('User', userSchema);
+
+module.exports = User;
