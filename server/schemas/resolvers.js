@@ -46,11 +46,11 @@ const resolvers = {
                 { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }
                 );
 
-            console.dir(item)
+            console.log(item)
 
             await User.findOneAndUpdate(
                 { username: itemUsername },
-                { $addtoSet: { items: item._id.toString() } }
+                { $addtoSet: { items: item._id } }
             );
 
             return item;

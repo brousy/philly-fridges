@@ -14,7 +14,7 @@ type Item {
     isFrozen: String
     addDate: String
     expiryDate: String
-    itemUsername: String
+    itemUsername: String!
     itemFridgename: String
 }
 
@@ -22,7 +22,7 @@ type User {
     _id: ID
     fridges: [Fridge]
     items: [Item]
-    username: String
+    username: String!
     email: String
     password: String
 }
@@ -33,9 +33,9 @@ type Auth {
 }
 
 type Query {
-    items: [Item]!
-    fridges: [Fridge]!
-    users: [User]!
+    items: [Item]
+    fridges: [Fridge]
+    users: [User]
     fridge(fridge: String!): Fridge
     userItems(user: String!): User
     fridgeItems(fridge: String!): Fridge
