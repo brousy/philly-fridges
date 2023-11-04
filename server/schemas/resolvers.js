@@ -42,15 +42,19 @@ const resolvers = {
             return deleteFridge
         },
         addItem: async (parent, { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }) => {
+                
             const item = await Item.create(
                 { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }
                 );
-
-            console.log(item)
+            
+            await Fridge.findOneAndUpdate(
+                { name: itemFridgename },
+                { $addToSet: { items: item._id } }
+            )
 
             await User.findOneAndUpdate(
                 { username: itemUsername },
-                { $addtoSet: { items: item._id } }
+                { $addToSet: { items: item._id } }
             );
 
             return item;

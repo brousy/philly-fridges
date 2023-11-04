@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "watch": "nodemon server"
+    "watch": "nodemon server",
+    "seed": "node seeders/seed.js"
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",

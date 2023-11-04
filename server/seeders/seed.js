@@ -1,6 +1,6 @@
 const db = require('../config/connection');
-const { User, Item, Fridge } = require('..models');
-const userSeeds = require('./userSeeds.json)');
+const { User, Item, Fridge } = require('../models');
+const userSeeds = require('./userSeeds.json');
 const itemSeeds = require('./itemSeeds.json');
 const fridgeSeeds = require('./fridgeSeeds.json');
 const cleanDB = require('./cleanDB');
@@ -23,7 +23,7 @@ db.once('open', async () => {
         };
 
         for (let i = 0; i < itemSeeds.length; i++) {
-            const { _id, itemUsername } = await Item.create(itemSeeds[i]);
+            const { _id, itemUsername, itemFridgename } = await Item.create(itemSeeds[i]);
             const user = await User.findOneAndUpdate(
                 { username: itemUsername },
                 { $addToSet: { items: _id } }
