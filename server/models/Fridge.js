@@ -29,6 +29,6 @@ const fridgeSchema = new Schema(
     }
 );
 
-const Fridge = model('fridge', fridgeSchema);
+const Fridge = model('Fridge', fridgeSchema);
 
 module.exports = Fridge; 

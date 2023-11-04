@@ -36,7 +36,7 @@ type Query {
     items: [Item]
     fridges: [Fridge]
     users: [User]
-    fridge(fridge: String!): Fridge
+    userFridges(user: String!): User
     userItems(user: String!): User
     fridgeItems(fridge: String!): Fridge
     itemId(item: ID!): Item

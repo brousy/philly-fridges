@@ -12,8 +12,8 @@ const resolvers = {
         users: async () => {
             return User.find({}).sort({ name: 1 });;
         },
-        fridge: async (parent, { fridge }) => {
-            return Fridge.findOne({ name: fridge });
+        userFridges: async (parent, { user }) => {
+            return User.findOne({ username: user }).populate('fridges');
         },
         userItems: async (parent, { user }) => {
             return User.findOne({ username: user }).populate('items');
@@ -27,7 +27,14 @@ const resolvers = {
     },
     Mutation: {
         addFridge: async (parent, { name, online, username }) => {
-            return Fridge.create({ name, online, username });
+            const fridge = await Fridge.create({ name, online, username });
+
+            await User.findOneAndUpdate(
+                { username: username },
+                { $addToSet: { fridges: fridge._id } }
+            );
+
+            return fridge;
         },
         updateFridge: async (parent, { name, status }) => {
             const upFridge = await Fridge.findOneAndUpdate(
@@ -35,11 +42,11 @@ const resolvers = {
                 { $set: {online: status} },
                 { new: true }
             );
-            return upFridge            
+            return upFridge;            
         },
         deleteFridge: async (parent, { fridge }) => {
             const deleteFridge = await Fridge.findOneAndDelete({ name: fridge });
-            return deleteFridge
+            return deleteFridge;
         },
         addItem: async (parent, { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }) => {
                 
@@ -50,11 +57,12 @@ const resolvers = {
             await Fridge.findOneAndUpdate(
                 { name: itemFridgename },
                 { $addToSet: { items: item._id } }
-            )
+            );
 
             await User.findOneAndUpdate(
                 { username: itemUsername },
-                { $addToSet: { items: item._id } }
+                { $addToSet: { items: item._id } },
+                
             );
 
             return item;
@@ -64,11 +72,12 @@ const resolvers = {
         },
         updateItem: async (parent, { itemId, name, quantity }) => {
             const item = await Item.findByIdAndUpdate(
-                { _id: itemId },
-                { itemName: name },
-                { itemQuantity: quantity }
+                { _id: itemId }, 
+                { $set: { itemName: name,
+                itemQuantity: quantity } },
+                { new: true }
             );
-            return { item }
+            return item
         },
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
