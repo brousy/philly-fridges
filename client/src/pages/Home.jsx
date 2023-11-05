@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 
-import FridgeList from '../components/FridgeList';
+import FridgeList from "../components/FridgeList/fridgelist.jsx";
 
 import { QUERY_FRIDGES } from '../utils/queries';
 
@@ -17,7 +17,7 @@ const Home = () => {
                             <div>Loading...</div>
                         ) : (
                             <FridgeList
-                                fridges={fridge.names} />
+                                fridges={fridge} />
                         )}
                     </div>
                 </div>

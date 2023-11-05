@@ -1,5 +1,5 @@
 const FridgeList = ({ fridges }) => {
-    if (!fridges.length) {
+    if (!fridges) {
         return <h3>No Fridges Available</h3>;
     }
 
