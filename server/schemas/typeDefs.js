@@ -50,8 +50,8 @@ type Mutation {
     addItem(itemName: String!, itemQuantity: String!, isFrozen: Boolean!, itemUsername: String!, itemFridgename: String!): Item
     deleteItem(itemId: ID!): Item
     updateItem(itemId: ID!, name: String!, quantity: String!): Item
-    addUser(username: String!, email: String!, password: String!): User
-    login(username: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     deleteUser(user: String!): User
 }
 `

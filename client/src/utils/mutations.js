@@ -33,11 +33,12 @@ export const ADD_FRIDGE = gql`
       username
       }
     }
-  }
 `;
 
+
+
 export const ADD_ITEM = gql`
-    mutation addItem($itemName: String!, itemQuantity: String!, isFrozen: Boolean, itemUsername: String!, itemFridgename: String!) {
+    mutation addItem($itemName: String!, $itemQuantity: String!, $isFrozen: Boolean, $itemUsername: String!, $itemFridgename: String!) {
         addFridge(itemName: $itemName, itemQuantity: $itemQuantity, isFrozen: $isFrozen, itemUsername: $itemUsername, itemFridgename: $itemFridgename) {
             _id
             itemName
