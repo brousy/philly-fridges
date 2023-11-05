@@ -11,7 +11,7 @@ type Item {
     _id: ID
     itemName: String
     itemQuantity: String
-    isFrozen: String
+    isFrozen: Boolean
     addDate: String
     expiryDate: String
     itemUsername: String!
