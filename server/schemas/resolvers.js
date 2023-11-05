@@ -7,7 +7,7 @@ const resolvers = {
             return Item.find({});
         },
         fridges: async () => {
-            return Fridge.find().sort({ name: -1 });
+            return Fridge.find().sort({ name: 1 });
         },
         users: async () => {
             return User.find({}).sort({ name: 1 });;
@@ -24,7 +24,14 @@ const resolvers = {
         itemId: async (parent, { item }) => {
             return Item.findOne({ _id: item })
         },
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return User.findOne({ _id: context.user._id }).populate('thoughts');
+            }
+            throw AuthenticationError;
+          },
     },
+    // looking into adding auth errors to the below mutations
     Mutation: {
         addFridge: async (parent, { name, online, username }) => {
             const fridge = await Fridge.create({ name, online, username });
@@ -82,20 +89,25 @@ const resolvers = {
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
             const token = signToken(user);
-            return { token, user }
-        },
-        login: async (parent, { username, password }) => {
-            const user = await User.findOne({ username });
+            return { token, user };
+          },
+          login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
+      
             if (!user) {
-                throw AuthenticationError
+              throw AuthenticationError;
             }
-            const correctPw = await user.isCorrectPassword(password)
+      
+            const correctPw = await user.isCorrectPassword(password);
+      
             if (!correctPw) {
-                throw AuthenticationError
+              throw AuthenticationError;
             }
+      
             const token = signToken(user);
-            return { token, user }
-        },
+      
+            return { token, user };
+          },
         deleteUser: async (parent, { user }) => {
             return User.findOneAndDelete({ username: user });
         },

@@ -40,6 +40,7 @@ type Query {
     userItems(user: String!): User
     fridgeItems(fridge: String!): Fridge
     itemId(item: ID!): Item
+    me: User
 }
 
 type Mutation {
