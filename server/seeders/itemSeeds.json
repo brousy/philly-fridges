@@ -1,0 +1,65 @@
+[
+    {
+        "itemName": "Coke-12pack",
+        "itemQuantity": 6,
+        "isFrozen": false,
+        "itemFridgename": "1025 S Lexington Ave",
+        "itemUsername": "roqieux"
+    },
+    {
+        "itemName": "Sprite-12pack",
+        "itemQuantity": 6,
+        "isFrozen": false,
+        "itemFridgename": "1025 S Lexington Ave",
+        "itemUsername": "roqieux"
+    },
+    {
+        "itemName": "Eggs-Dozen",
+        "itemQuantity": 6,
+        "isFrozen": false,
+        "itemFridgename": "1025 S Lexington Ave",
+        "itemUsername": "roqieux"
+    },
+    {
+        "itemName": "Bacon-1lb",
+        "itemQuantity": 4,
+        "isFrozen": false,
+        "itemFridgename": "1025 S Lexington Ave",
+        "itemUsername": "roqieux"
+    },
+    {
+        "itemName": "Family-Lasagna",
+        "itemQuantity": 2,
+        "isFrozen": false,
+        "itemFridgename": "1025 S Lexington Ave",
+        "itemUsername": "judemon"
+    },
+    {
+        "itemName": "Rotisserie-Chicken",
+        "itemQuantity": 4,
+        "isFrozen": false,
+        "itemFridgename": "1301 Walnut St",
+        "itemUsername": "judemon"
+    },
+    {
+        "itemName": "Family-Mac-&-Cheese",
+        "itemQuantity": 2,
+        "isFrozen": true,
+        "itemFridgename": "1301 Walnut St",
+        "itemUsername": "brousy"
+    },
+    {
+        "itemName": "Individual-Breakfast-Burrito",
+        "itemQuantity": 8,
+        "isFrozen": true,
+        "itemFridgename": "1301 Walnut St",
+        "itemUsername": "brousy"
+    },
+    {
+        "itemName": "Eggo-Box",
+        "itemQuantity": 6,
+        "isFrozen": true,
+        "itemFridgename": "1301 Walnut St",
+        "itemUsername": "brousy"
+    }
+]

@@ -1,11 +1,7 @@
-const { Schema, Types, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const fridgeSchema = new Schema(
     {
-        fridgeId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId(),
-        },
         name: {
             type: String,
             required: true,
@@ -15,10 +11,14 @@ const fridgeSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        username: {
+            type: String,
+            required: true
+        },
         items: [
             {
                 type: Schema.Types.ObjectId,
-                ref: 'item'
+                ref: 'Item'
             }
         ],
     },
@@ -29,4 +29,6 @@ const fridgeSchema = new Schema(
     }
 );
 
-module.exports = model('fridge', fridgeSchema)
+const Fridge = model('Fridge', fridgeSchema);
+
+module.exports = Fridge; 

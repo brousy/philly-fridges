@@ -1,4 +1,4 @@
-const { Item, User } =  require('../models');
+const { Item, Fridge, User } =  require('../models');
 
 // Get all items 
 
@@ -15,7 +15,7 @@ const getAllItems = async (req, res) => {
 
 const getItem = async (req, res) => {
     try {
-        const item = await Item.findOne({ _id: req.params.thoughtId });
+        const item = await Item.findOne({ _id: req.params.itemId });
         res.status(200).json(item);
     } catch (error) {
         res.status(404).json({ msg: `No item(s) found with that id` });
@@ -33,7 +33,7 @@ const createItem = async (req, res) => {
             { new: true }
         );
         const updateFridge = await Fridge.findOneAndUpdate(
-            { username: req.body.username },
+            { name: req.body.fridgename },
             { $addToSet: { items: item._id } },
             { new: true }
         );
@@ -43,7 +43,41 @@ const createItem = async (req, res) => {
     }
 };
 
+// Update one item by ID. Useful for quantity updates as people remove items. 
 
+const updateItem = async (req, res) => {
+    try {
+        const item = await Item.findOneAndUpdate(
+            { _id: req.params.itemId },
+            { $set: req.body }
+        );
+        res.status(200).json(item);
+    } catch (error) {
+        res.status(404).json({ msg: `No items found with this id`, error: error });
+    }
+};
+
+// Find an item by ID and delete it
+
+const deleteItem = async (req, res) => {
+    try {
+        const deletedItem = await Item.findByIdAndDelete({ _id: req.params.itemId });
+        res.status(200).json({ msg: `item deleted!`, deletedItem });
+    } catch (error) {
+        res.status(404).json({ msg: `No items found`, error: error });
+    }
+};
+
+// Get all items for one user
+
+const oneUserItems = async (req, res) => {
+    try {
+        const userItems = await Item.find({ username: req.params.username });
+        res.status(200).json(userItems);
+    } catch (error) {
+        res.status(404).json({ msg: `No items found matching that username`, error: error });
+    }
+};
 
 
 module.exports = {
@@ -51,7 +85,8 @@ module.exports = {
     getAllItems,
     getItem,
     createItem,
-    deleteThought,
-    updateThought
+    deleteItem,
+    updateItem,
+    oneUserItems,
   
   };

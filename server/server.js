@@ -1,22 +1,43 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
+const { authMiddleware } = require('./utils/auth');
+const path = require('path');
+
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
+const PORT = process.env.port || 3001;
 const app = express();
-const port = process.env.PORT || 3001;
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+});
 
+const startApolloServer = async () => {
+    await server.start();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-const Fridge = require('./models/fridge');
-const Item = require('./models/item');
-const User = require('./models/user');
+app.use('/graphql', expressMiddleware(server, {
+    context: authMiddleware
+  }));
+  
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
-app.get('/send', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/send.html'))
-);
-app.get('/paths', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/paths.html'))
-);
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+  }
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
   });
+};
+
+startApolloServer();

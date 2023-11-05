@@ -1,11 +1,7 @@
-const { Schema, Types, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema(
     {
-        itemId: {
-            type: Schema.Types.ObjectId,
-            default: () => new Types.ObjectId(),
-        },
         itemName: {
             type: String,
             required: true,
@@ -24,7 +20,7 @@ const itemSchema = new Schema(
         },
         expiryDate: {
             type: Date, 
-            default: (this) => {
+            default: () => {
                 if(this.isFrozen){
                     return new Date(+new Date() + 28 * 24 * 60 * 60 * 1000);
                 } else {
@@ -32,18 +28,25 @@ const itemSchema = new Schema(
                 }
             }
         },
-        username: {
+        itemUsername: {
             type: String,
             required: true,
+            trim: true
+        },
+        itemFridgename: {
+            type: String,
+            required: true,
+            trim: true
         }
     },
     {
         toJSON: {
             virtuals: true,
         },
-        id: false,
     }
 );
 
-module.exports = model('item', itemSchema);
+const Item = model('Item', itemSchema);
+
+module.exports = Item;
 
