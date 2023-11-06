@@ -8,13 +8,13 @@
 } */
 
 header{
-  background-color: yellow;
+
   height: 75px;
  
 }
 
 footer {
-  background-color: yellow;
+
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -105,3 +105,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+

@@ -12,15 +12,18 @@ export const QUERY_FRIDGES = gql`
 `;
 
 export const QUERY_FRIDGE_ITEMS = gql`
-  query getFridgeItems($name: String!) {
-    fridge(name: $name) {
+  query getFridgeItems($fridgeId: ID!) {
+    fridgeItems(fridgeId: $fridgeId) {
       _id
       name
       items {
         _id
         itemName
         itemQuantity
+        addDate
         expiryDate
+        itemUsername
+        itemFridgename
       }
     }
   }
@@ -69,3 +72,25 @@ export const QUERY_USER_FRIDGES = gql`
   }
 `;
 
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+      fridges {
+        _id
+        name
+        online
+        username
+      }
+      items {
+        _id
+        itemName
+        itemQuantity
+        itemUsername
+        itemFridgename
+      }
+    }
+  }
+`;

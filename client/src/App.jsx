@@ -1,7 +1,3 @@
-
-
-// Our code below
-
 import './App.css';
 import {
   ApolloClient,
@@ -40,7 +36,7 @@ function App() {
 
 
     <ApolloProvider client={client}>
-
+      <div className="flex-column justify-flex-start min-100-vh"></div>
         <Header />
         <div className="container">
           <Outlet />

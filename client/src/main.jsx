@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         element: <Profile />
       }
       , {
-        path: '/fridges/',
+        path: '/fridges/:fridgeId',
         element: <SingleFridge />
       }
     ]

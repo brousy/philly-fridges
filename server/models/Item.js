@@ -1,4 +1,6 @@
+const { Timestamp } = require('mongodb');
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const itemSchema = new Schema(
     {
@@ -17,6 +19,7 @@ const itemSchema = new Schema(
         addDate: {
             type: Date, 
             default: Date.now(),
+            get: (timestamp) => dateFormat(timestamp),
         },
         expiryDate: {
             type: Date, 
@@ -26,7 +29,8 @@ const itemSchema = new Schema(
                 } else {
                    return new Date(+new Date() + 5 * 24 * 60 * 60 * 1000);
                 }
-            }
+            },
+            get: (timestamp) => dateFormat(timestamp),
         },
         itemUsername: {
             type: String,
