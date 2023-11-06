@@ -38,7 +38,7 @@ type Query {
     users: [User]
     userFridges(user: String!): User
     userItems(user: String!): User
-    fridgeItems(fridge: String!): Fridge
+    fridgeItems(fridgeId: ID!): Fridge
     itemId(item: ID!): Item
     me: User
 }
