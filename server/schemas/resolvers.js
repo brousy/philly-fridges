@@ -18,8 +18,8 @@ const resolvers = {
         userItems: async (parent, { user }) => {
             return User.findOne({ username: user }).populate('items');
         },
-        fridgeItems: async (parent, { fridge }) => {
-            return Fridge.findOne({ name: fridge }).populate('items');
+        fridgeItems: async (parent, { fridgeId }) => {
+            return Fridge.findOne({ _id: fridgeId }).populate('items');
         },
         itemId: async (parent, { item }) => {
             return Item.findOne({ _id: item })
