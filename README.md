@@ -6,6 +6,11 @@ Phree Philly Phridge is a application that helps our community locate refridgera
 
 Showcasing a React App with Authentication. MERN website that allows a user to create a login, add details of their fridges and food items, then mark the plant off as watered. MongoDB, Express, React, Node. Hosted on Heroku.
 
+Please visit this website to see our application:
+
+[Deployed application](https://shiny-garbonzo-75c1ae74f81a.herokuapp.com/)
+[Github Repository](https://github.com/brousy)
+
 ## Table of Contents
  
 ## Languages Used:
@@ -24,13 +29,18 @@ Showcasing a React App with Authentication. MERN website that allows a user to c
 * Github
 
 ## Installation
+ What are the steps necessary to install this app.
 
-Please visit this website to see our application:
+## Usage 
 
-[Deployed application](https://shiny-garbonzo-75c1ae74f81a.herokuapp.com/)
-[Github Repository](https://github.com/brousy)
+Provide instructions and examples for use. Include screenshots as needed.
 
-## Contributions
+To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+
+    ```md
+    ![alt text](assets/images/screenshot.png)
+    ```
+## Credits
 
 Project Team Members:
     1. Julien Larroque
@@ -38,8 +48,12 @@ Project Team Members:
     3. Jude Hartmann
     4. Victor Marczy
 
-## Screen Shots
+
+## Features & Screen Shots
 <!-- Add screen shots after final application is deployed -->
 ```md
     ![]()
  ```
+
+## How to Contribute
+
