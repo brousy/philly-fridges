@@ -8,9 +8,13 @@ const Home = () => {
     const { loading, data } = useQuery(QUERY_FRIDGES);
     const fridge = data?.fridges || [];
 
+    console.log(fridge)
+
     return (
+        
+        
         <main>
-            <div className="flex-row justify-center ">
+            <div className="flex-row justify-center">
                 <div>
                     <div className="col-12 col-md-8 mb-3">
                         {loading ? (

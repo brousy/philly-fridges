@@ -36,11 +36,10 @@ type Query {
     items: [Item]
     fridges: [Fridge]
     users: [User]
-    userFridges(user: String!): User
-    userItems(user: String!): User
     fridgeItems(fridgeId: ID!): Fridge
     itemId(item: ID!): Item
     me: User
+    user(username: String!): User
 }
 
 type Mutation {

@@ -31,7 +31,7 @@ export const QUERY_FRIDGE_ITEMS = gql`
 
 export const QUERY_SINGLE_ITEM = gql`
   query getSingleItem($itemId: ID!) {
-    thought(_id: $itemId) {
+    item(_id: $itemId) {
       _id
       itemName
       itemQuantity
@@ -45,7 +45,7 @@ export const QUERY_SINGLE_ITEM = gql`
 
 export const QUERY_USER_ITEMS = gql`
   query getUserItems($user: String!) {
-    user(username: $user) {
+    userItems(username: $user) {
       _id
       username
       items {
@@ -60,7 +60,7 @@ export const QUERY_USER_ITEMS = gql`
 
 export const QUERY_USER_FRIDGES = gql`
   query getUserFridges($user: String!) {
-    user(username: $user) {
+    userFridges(username: $user) {
       _id
       username
       fridges {
@@ -89,6 +89,28 @@ export const QUERY_ME = gql`
         itemName
         itemQuantity
         itemUsername
+        itemFridgename
+      }
+    }
+  }
+`;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      fridges {
+        _id
+        name
+        online
+      }
+      items {
+        _id
+        itemName
+        itemQuantity
+        expiryDate
         itemFridgename
       }
     }

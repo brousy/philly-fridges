@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const FridgeList = ({ fridges }) => {
-    if (!fridges) {
+    if (!fridges.length) {
         return <h3>No Fridges Available</h3>;
     }
 
