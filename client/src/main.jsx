@@ -24,21 +24,13 @@ const router = createBrowserRouter([
       }, {
         path: '/login',
         element: <Login />
-      }
-      
-      , {
+      }, {
         path: '/signup',
         element: <Signup />
-      }
-      , {
+      }, {
         path: '/profiles/:username',
         element: <Profile />
-      }
-      , {
-        path: '/me',
-        element: <Profile />
-      }
-      , {
+      }, {
         path: '/fridges/:fridgeId',
         element: <SingleFridge />
       }

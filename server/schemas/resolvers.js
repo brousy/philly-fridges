@@ -12,18 +12,15 @@ const resolvers = {
         users: async () => {
             return User.find({}).sort({ name: 1 });;
         },
-        userFridges: async (parent, { user }) => {
-            return User.findOne({ username: user }).populate('fridges');
-        },
-        userItems: async (parent, { user }) => {
-            return User.findOne({ username: user }).populate('items');
-        },
         fridgeItems: async (parent, { fridgeId }) => {
             return Fridge.findOne({ _id: fridgeId }).populate('items');
         },
         itemId: async (parent, { item }) => {
             return Item.findOne({ _id: item })
         },
+        user: async (parent, { username }) => {
+            return User.findOne({ username }).populate(['fridges', 'items']);
+          },
         me: async (parent, args, context) => {
             if (context.user) {
               return User.findOne({ _id: context.user._id }).populate('fridges');

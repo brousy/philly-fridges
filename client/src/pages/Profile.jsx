@@ -1,20 +1,60 @@
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
 
-function Profile(){
-    
+import FridgeList from '../components/FridgeList/fridgelist';
+import ItemList from '../components/ItemList';
 
-    return(
-        <main className="bg-custom container border rounded logcont mainhandles container-fluid p-5 mt-5" id="content">
-            <section  id="lll">
-                <h3>My Fridges</h3>
-                <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                </ul>
-            </section>
-            
-        </main>
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
+
+import Auth from '../utils/auth';
+
+const Profile = () => {
+  const { username: userParam } = useParams();
+
+  console.log(userParam)
+
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: userParam },
+  });
+
+  const user = data?.user || {};
+
+  console.log(user)
+
+  // navigate to personal profile page if username is yours
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return (
+      <main>
+        <div className="flex-row justify-center">
+          <div className="col-12 col-lg-5">
+            <div className="card">
+              <h4 className="card-header bg-primary text-light p-2">User Fridges</h4>
+              <div className="card-body">
+                {loading ? (
+                  <div>Loading...</div>) : (
+                  <FridgeList fridges={user.fridges} />
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="col-12 col-lg-5">
+            <div className="card">
+              <h4 className="card-header bg-primary text-light p-2">User Items</h4>
+              <div className="card-body">
+                {loading ? (
+                  <div>Loading...</div>) : (
+                  <ItemList items={user.items} />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
     )
+  }
 }
 
 export default Profile;
