@@ -2,9 +2,10 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import FridgeList from '../components/FridgeList/fridgelist';
+import FridgeForm from '../components/FridgeForm';
 import ItemList from '../components/ItemList';
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
@@ -33,10 +34,13 @@ const Profile = () => {
             <div className="card">
               <h4 className="card-header bg-primary text-light p-2">User Fridges</h4>
               <div className="card-body">
-                {loading ? (
-                  <div>Loading...</div>) : (
+                <div> 
                   <FridgeList fridges={user.fridges} />
-                )}
+                </div>
+                <div className='card-body'>
+                <h4 className="card-header bg-success text-light p-2">Add a Fridge</h4>
+                  <FridgeForm />
+                </div>
               </div>
             </div>
           </div>

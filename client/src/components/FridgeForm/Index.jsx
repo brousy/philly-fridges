@@ -1,124 +1,127 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 import { useMutation } from '@apollo/client';
+
 import { ADD_FRIDGE } from '../../utils/mutations';
+
+import { QUERY_FRIDGES, QUERY_USER } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const fridgeCreate = () => {
-    const [formState, setFormState] = useState({
-        name: '',
-        online: ''
-    });
+const FridgeForm = () => {
+  const [name, setFridgeName] = useState('');
 
-    const [selectedOption, setSelectedOption] = useState("isOnline");
+  const [online, setOnline] = useState('true');
 
-    const [addFridge, { error, data }] = useMutation(ADD_FRIDGE);
+  const username = Auth.getProfile().data.username;
+
+  const [addFridge, { error }] = useMutation(
+    ADD_FRIDGE,
+    {
+      refetchQueries: [
+        QUERY_FRIDGES,
+        'getFridges',
+        QUERY_USER,
+        'user'
+      ]
+    }
+  );
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      console.log([name, online, username])
+      console.log
+
+      const { data } = await addFridge({
+        variables: {
+          name: name,
+          online: online,
+          username: username
+        },
+      });
+
+      setFridgeName('');
+      setOnlineTrue('true');
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
     const handleChange = (event) => {
-        const { name, value } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
+      const { name, value } = event.target;
+  
+      if (name === 'name' && value.length <= 280) {
+        setFridgeName(value);
+      }
     };
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-
-        try {
-            const { data } = await addFridge({
-                variables: { ...formState },
-            });
-
-            Auth.login(data.addFridge.token);
-        } catch (error) {
-            console.error(error);
-        }
+    const handleOnline = (event) => {
+        setOnline(event.target.value)
     };
 
-    return (
-        <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Add a Fridge</h4>
-          <div className="card-body">
-            {data ? (
-              <p>
-                Fridge Added Successfully!
-                <Link to="/">Back Home?</Link>
-                <Link to="/me">Return to Profile</Link>
-              </p>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Fridge name"
-                  name="name"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <span>Is Online?</span>
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="isOnline"
-                  id="flexRadioDefault1"
-                  value="isOnline"
-                  onChange={handleChange}
-                  checked={selectedOption===isOnline}
-                />
-                <label 
-                  className='form-check-label'
-                  for="flexRadioDefault1"
-                >
-                    True
-                </label>
-                <input
-                  className="form-check-input"
-                  type="radio"
-                  name="isFrozen"
-                  id="flexRadioDefault2"
-                /> 
-                <label 
-                  className='form-check-label'
-                  for="flexRadioDefault2"
-                >
-                    False
-                </label>
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: 'pointer' }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
+  return (
+    <div >
+      <form onSubmit={handleFormSubmit}>
+        <input
+          className="form-input"
+          placeholder="Fridge name"
+          name="name"
+          type="text"
+          value={name}
+          onChange={handleChange}
+        />
+        <span>Is Online?</span>
+        <input
+          className="form-check-input"
+          type="radio"
+          name="isOnline"
+          value="true"
+          id="flexRadioDefault1"
+          checked={online === 'true'}
+          onChange={handleOnline}
+        />
+        <label
+          className='form-check-label'
+          htmlFor="flexRadioDefault1"
+        >
+          True
+        </label>
+        <input
+          className="form-check-input"
+          type="radio"
+          name="isOnline"
+          value="false"
+          id="flexRadioDefault2"
+          checked={online === 'false'}
+          onChange={handleOnline}
+        />
+        <label
+          className='form-check-label'
+          htmlFor="flexRadioDefault2"
+        >
+          False
+        </label>
+        <button
+          className="btn btn-block btn-primary"
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
 
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
+      {error && (
+        <div className="my-3 p-3 bg-danger text-white">
+          {error.message}
         </div>
-      </div>
-    </main>
+      )}
+    </div>
   );
 };
+
+export default FridgeForm;
 
 

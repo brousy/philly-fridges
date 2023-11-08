@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_FRIDGE = gql`
-  mutation addFridge($name: String!, $online: Boolean, $username: String!) {
+  mutation addFridge($name: String!, $online: String, $username: String!) {
     addFridge(name: $name, online: $online, username: $username) {
       _id
       name

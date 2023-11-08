@@ -13,7 +13,7 @@ const itemSchema = new Schema(
             required: true,
         },
         isFrozen: {
-            type: Boolean,
+            type: String,
             required: true,
         },
         addDate: {

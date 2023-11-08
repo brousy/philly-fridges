@@ -8,7 +8,7 @@ const fridgeSchema = new Schema(
             trim: true
         },
         online: {
-            type: Boolean,
+            type: String,
             default: false,
         },
         username: {

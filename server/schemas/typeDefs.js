@@ -2,7 +2,7 @@ const typeDefs = `
 type Fridge {
     _id: ID
     name: String
-    online: Boolean
+    online: String
     username: String
     items: [Item]
 }
@@ -11,7 +11,7 @@ type Item {
     _id: ID
     itemName: String
     itemQuantity: String
-    isFrozen: Boolean
+    isFrozen: String
     addDate: String
     expiryDate: String
     itemUsername: String!
@@ -43,10 +43,10 @@ type Query {
 }
 
 type Mutation {
-    addFridge(name: String!, online: String!, username: String!): Fridge
-    updateFridge(name: String!, status: Boolean!): Fridge
+    addFridge(name: String!, online: String, username: String!): Fridge
+    updateFridge(name: String!, status: String!): Fridge
     deleteFridge(fridge: String!): Fridge
-    addItem(itemName: String!, itemQuantity: String!, isFrozen: Boolean!, itemUsername: String!, itemFridgename: String!): Item
+    addItem(itemName: String!, itemQuantity: String!, isFrozen: String!, itemUsername: String!, itemFridgename: String!): Item
     deleteItem(itemId: ID!): Item
     updateItem(itemId: ID!, name: String!, quantity: String!): Item
     addUser(username: String!, email: String!, password: String!): Auth

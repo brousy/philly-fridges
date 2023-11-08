@@ -111,6 +111,7 @@ export const QUERY_USER = gql`
         _id
         itemName
         itemQuantity
+        addDate
         expiryDate
         itemFridgename
       }
