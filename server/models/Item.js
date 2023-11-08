@@ -13,7 +13,7 @@ const itemSchema = new Schema(
             required: true,
         },
         isFrozen: {
-            type: Boolean,
+            type: String,
             required: true,
         },
         addDate: {
@@ -24,7 +24,9 @@ const itemSchema = new Schema(
         expiryDate: {
             type: Date, 
             default: () => {
-                if(this.isFrozen){
+                if ( this.length > 0 ) {
+                    return expiryDate
+                } if (this.isFrozen) {
                     return new Date(+new Date() + 28 * 24 * 60 * 60 * 1000);
                 } else {
                    return new Date(+new Date() + 5 * 24 * 60 * 60 * 1000);

@@ -7,7 +7,8 @@ const ItemList = ({ items = [] }) => {
     return (
         <>
             <h3
-                className="p-5 display-inline-block"
+                className="display-inline-block"
+                style={{ borderBottom: '1px dotted #1a1a1a' }}
             >
                 Items
             </h3>
@@ -15,12 +16,12 @@ const ItemList = ({ items = [] }) => {
                 {items &&
                     items.map((item) => (
                         <div key={item._id} className="col-12 mb-3 pb-3">
-                            <div className="p-3 bg-dark text-light">
+                            <div className="p-3 bg-dark text-light rounded">
                                 <h5 className="card-header">
                                     {item.itemName}
                                     </h5>
                                     <span>
-                                        {item.itemUsername} added {item.itemName} on {item.addDate}
+                                        {item.itemUsername} {' '}  {item.itemName} expires on {item.expiryDate}
                                     </span>
                                 <p className="card-body">{item.description}</p>
                             </div>

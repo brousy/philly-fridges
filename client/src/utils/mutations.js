@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_FRIDGE = gql`
-  mutation addFridge($name: String!, $online: Boolean, $username: String!) {
+  mutation addFridge($name: String!, $online: String, $username: String!) {
     addFridge(name: $name, online: $online, username: $username) {
       _id
       name
@@ -38,8 +38,8 @@ export const ADD_FRIDGE = gql`
 
 
 export const ADD_ITEM = gql`
-    mutation addItem($itemName: String!, $itemQuantity: String!, $isFrozen: Boolean, $itemUsername: String!, $itemFridgename: String!) {
-        addFridge(itemName: $itemName, itemQuantity: $itemQuantity, isFrozen: $isFrozen, itemUsername: $itemUsername, itemFridgename: $itemFridgename) {
+    mutation addItem($itemName: String!, $itemQuantity: String!, $isFrozen: String!, $expiryDate: String, $itemUsername: String!, $itemFridgename: String!) {
+        addItem(itemName: $itemName, itemQuantity: $itemQuantity, isFrozen: $isFrozen, expiryDate: $expiryDate itemUsername: $itemUsername, itemFridgename: $itemFridgename) {
             _id
             itemName
             itemQuantity

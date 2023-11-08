@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import ItemList from "../components/ItemList";
 import ItemForm from "../components/ItemForm";
 
+import { useOutletContext } from "react-router-dom";
+
 import { QUERY_FRIDGE_ITEMS } from "../utils/queries";
 
 
@@ -11,14 +13,12 @@ const SingleFridge = () => {
 
     const { fridgeId } = useParams();
 
-    console.log(fridgeId)
-
     const { loading, data } = useQuery(QUERY_FRIDGE_ITEMS, {
         variables: { fridgeId: fridgeId },
     });
 
     const fridge = data?.fridgeItems || {};
-
+    
     console.log(fridge);
 
     if (loading) {
@@ -32,7 +32,7 @@ const SingleFridge = () => {
                 <ItemList items={fridge.items} />
             </div>
             <div className="m-3 p-4">
-                <ItemForm fridgeId={fridge._id} />
+                <ItemForm name={fridge.name} />
             </div>
         </div>
     );

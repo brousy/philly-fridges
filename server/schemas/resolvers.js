@@ -52,10 +52,10 @@ const resolvers = {
             const deleteFridge = await Fridge.findOneAndDelete({ name: fridge });
             return deleteFridge;
         },
-        addItem: async (parent, { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }) => {
+        addItem: async (parent, { itemName, itemQuantity, isFrozen, expiryDate,itemUsername, itemFridgename }) => {
                 
             const item = await Item.create(
-                { itemName, itemQuantity, isFrozen, itemUsername, itemFridgename }
+                { itemName, itemQuantity, isFrozen, expiryDate, itemUsername, itemFridgename }
                 );
             
             await Fridge.findOneAndUpdate(
