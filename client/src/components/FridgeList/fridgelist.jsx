@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-const FridgeList = ({ fridges }) => {
-    if (!fridges.length) {
+import { QUERY_FRIDGES } from '../../utils/queries';
+
+const FridgeList = () => {
+    const { loading, data } = useQuery(QUERY_FRIDGES);
+    const fridge = data?.fridges || [];
+
+    if (!fridge.length) {
         return <h3>No Fridges Available</h3>;
     }
 
@@ -14,8 +20,8 @@ const FridgeList = ({ fridges }) => {
                 Fridges
             </h3>
             <div className="flex-row my-4">
-                {fridges &&
-                    fridges.map((fridge) => (
+                {fridge &&
+                    fridge.map((fridge) => (
                         <div key={fridge._id} className="col-12 mb-3 pb-3">
                             <div className="p-3 bg-dark  text-light rounded">
                                 <h5 className="card-header">
