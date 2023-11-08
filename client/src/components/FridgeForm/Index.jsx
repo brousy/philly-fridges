@@ -32,9 +32,7 @@ const FridgeForm = () => {
     event.preventDefault();
 
     try {
-      console.log([name, online, username])
-      console.log
-
+      
       const { data } = await addFridge({
         variables: {
           name: name,

@@ -34,17 +34,17 @@ const Profile = () => {
             <div className="card">
               <h4 className="card-header bg-primary text-light p-2">User Fridges</h4>
               <div className="card-body">
-                <div> 
+                <div>
                   <FridgeList fridges={user.fridges} />
                 </div>
                 <div className='card-body'>
-                <h4 className="card-header bg-success text-light p-2">Add a Fridge</h4>
+                  <h4 className="card-header bg-success text-light p-2">Add a Fridge</h4>
                   <FridgeForm />
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-12 col-lg-5">
+          <div className="my-3 col-12 col-lg-5">
             <div className="card">
               <h4 className="card-header bg-primary text-light p-2">User Items</h4>
               <div className="card-body">
