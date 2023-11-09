@@ -23,13 +23,13 @@ const FridgeList = () => {
                 {fridge &&
                     fridge.map((fridge) => (
                         <div key={fridge._id} className="col-12 mb-3 pb-3">
-                            <div className="p-3 bg-dark  text-light rounded">
-                                <h5 className="card-header">
+                            <div className="p-3 bg-warning  text-light rounded">
+                                <h5 className="card-header bg-primary">
                                     {fridge.name}
                                 </h5>
                                 {fridge.online ? (
                                     <Link 
-                                        className="text-link" to={`/fridges/${fridge._id}`}>
+                                        className="text-link bg-primary text-light" to={`/fridges/${fridge._id}`}>
                                             Peek inside this fridge.
                                         </Link>
                                 ) : (
