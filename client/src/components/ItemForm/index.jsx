@@ -16,7 +16,7 @@ const ItemForm = ({ name }) => {
   const [formData, setFormData] = useState({
     itemName: '',
     itemQuantity: '',
-    isFrozen: ''
+    isFrozen: 'true'
   });
 
   const [expiryDate, setExpiryDate] = useState(new Date());
@@ -39,6 +39,7 @@ const ItemForm = ({ name }) => {
     });
   };
 
+
   // handles form submission 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -47,8 +48,6 @@ const ItemForm = ({ name }) => {
       const { data } = await addItem({
         variables: {
           ...formData,
-          isFrozen: 'true',
-          expiryDate: expiryDate,
           itemUsername: Auth.getProfile().data.username,
           itemFridgename: name,
         },
@@ -71,28 +70,59 @@ const ItemForm = ({ name }) => {
         <form onSubmit={handleFormSubmit}>
           <h2>Add an Item to the Fridge</h2>
           <div className="form-group">
-            <label htmlFor="name">Name:</label>
+            <label htmlFor="itemName">Name:</label>
             <input
               type="text"
-              id="name"
+              id="itemName"
               name="itemName"
               value={formData.name}
               onChange={handleInputChange}
             />
-          </div>
-          <div className="form-group">
             <label htmlFor="itemQuantity">Quantity:</label>
             <input
               type="number"
-              id="quantity"
+              id="itemQuantity"
               name="itemQuantity"
               value={formData.itemQuantity}
               onChange={handleInputChange}
             />
-            <DatePicker selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+            <span>Is Frozen?</span>
+            <input
+              className="form-check-input"
+              type="radio"
+              name="isFrozen"
+              value="true"
+              id="flexRadioDefault1"
+              checked={formData.isFrozen === 'true'}
+              onChange={handleInputChange}
+            />
+            <label
+              className='form-check-label'
+              htmlFor="flexRadioDefault1"
+            >
+              True
+            </label>
+            <input
+              className="form-check-input"
+              type="radio"
+              name="isFrozen"
+              value="false"
+              id="flexRadioDefault2"
+              checked={formData.isFrozen === 'false'}
+              onChange={handleInputChange}
+            />
+            <label
+              className='form-check-label'
+              htmlFor="flexRadioDefault2"
+            >
+              False
+            </label>
+            <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+            <label
+              className='form-check-input' id='datePicker'>Expiration Date</label>
+            {error && <p className="error">{error.message}</p>}
+            <button type="submit">Add Item</button>
           </div>
-          {error && <p className="error">{error.message}</p>}
-          <button type="submit">Add Item</button>
         </form>
       ) : (
         <p>You need to be logged in to add items to the fridge.</p>
