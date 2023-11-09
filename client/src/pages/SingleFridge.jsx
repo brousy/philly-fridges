@@ -26,9 +26,9 @@ const SingleFridge = () => {
     }
     return (
         <div className="my-3">
-            <h3 className="card-header bg-dark text-light p-2 m-0">{fridge.name}</h3>
+            <h3 className="card-header bg-warning text-light p-2 m-0">{fridge.name}</h3>
             <br />
-            <div className="my-5">
+            <div className="my-5 bg-primary">
                 <ItemList items={fridge.items} />
             </div>
             <div className="m-3 p-4">

@@ -9,11 +9,11 @@ const Header = () => {
 
   };
   return (
-    <header className="bg-info text-light mb-4 py-3 flex-row align-center">
+    <header className="bg-primary text-dark mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          <Link className="col-auto text-light" to="/">
-            <h1 className="m-0">Philly Fridges</h1>
+          <Link className="col-auto text-info" to="/">
+            <h1 className="m-0 text-warning">Philly Fridges</h1>
           </Link>
           <span className="m-0">Feeding our community.</span>
         </div>
@@ -30,7 +30,7 @@ const Header = () => {
           ) : (
 
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
+              <Link className="btn btn-lg btn-info btn-light m-2" to="/login">
                 Login
               </Link >
               <Link  className="btn btn-lg btn-light m-2" to="/signup" >

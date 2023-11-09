@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+
 }
 
 /* main{
@@ -16,6 +17,10 @@ footer {
   font-size: 25px;
   height: 75px;
   padding: 10px;
+}
+
+header {
+  color: #00296B
 }
 
 .Site {

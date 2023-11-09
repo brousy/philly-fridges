@@ -7,7 +7,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="">
-      <div className="">
+      <div className=" bg-primary">
         {location.pathname !== '/' && (
           <button
             className="btn btn-dark mb-3"

@@ -16,7 +16,7 @@ const ItemList = ({ items = [] }) => {
                 {items &&
                     items.map((item) => (
                         <div key={item._id} className="col-12 mb-3 pb-3">
-                            <div className="p-3 bg-dark text-light rounded">
+                            <div className="p-3 bg-warning text-light rounded">
                                 <h5 className="card-header">
                                     {item.itemName}
                                     </h5>
