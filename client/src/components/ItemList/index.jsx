@@ -19,11 +19,14 @@ const ItemList = ({ items = [], onTakeOne }) => {
               <div className="p-3 bg-dark text-light rounded">
                 <h5 className="card-header">
                   {item.itemName}
-                  <button onClick={() => handleTakeOne(item._id)}>Take One</button>
+                  
                 </h5>
                 <span>
                   {item.itemUsername} {item.itemName} expires on {item.expiryDate}
                 </span>
+                <div className="justify-content-end">
+                  <button onClick={() => handleTakeOne(item._id)}>Take One</button>
+                  </div>
                 <p className="card-body">{item.description}</p>
               </div>
 
