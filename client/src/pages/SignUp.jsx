@@ -40,8 +40,8 @@ const Signup = () => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10 align-items-center">
-        <div className="card">
+      <div className="bg-light col-12 col-lg-10 align-items-center">
+        <div className="card bg-warning">
           <h4 className="card-header bg-dark text-light p-2 align-center">
             Sign Up
           </h4>
@@ -55,7 +55,7 @@ const Signup = () => {
               <form onSubmit={handleFormSubmit}>
                 <div className="col-sm-2 col-form-label align-items-center">
                 <input
-                  className="form-input"
+                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="Your username"
                   name="username"
                   type="text"
@@ -63,7 +63,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -71,7 +71,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input"
+                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="******"
                   name="password"
                   type="password"
