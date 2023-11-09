@@ -41,11 +41,10 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card bg-warning">
-          <h4 className="card-header bg-light text-dark p-2">Login</h4>
-          <div className="card-body">
+    <section className='col-12 col-8-md' >
+      <div className="card bg-idie border-light">
+          <h4 className="rounded card-header bg-peach text-dark p-2">Login</h4>
+          <div className="card-body inline-block">
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -54,7 +53,7 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+                  className="form-input p-2 m-2  bg-light-subtle border border-dark rounded-3"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -62,15 +61,15 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
-                  placeholder="******"
+                  className="form-input p-2 m-2  bg-light-subtle border border-dark rounded-3"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
                 />
                 <button
-                  className="btn btn-block btn-primary"
+                  className="btn p-2 m-2 btn-primary"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -86,8 +85,7 @@ const Login = (props) => {
             )}
           </div>
         </div>
-      </div>
-    </main>
+    </section>
   );
 };
 

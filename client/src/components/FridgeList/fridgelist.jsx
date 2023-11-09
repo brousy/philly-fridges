@@ -12,24 +12,24 @@ const FridgeList = () => {
     }
 
     return (
-        <div>
-            <h3
-                className="display-inline-block"
+        <div className='bg-idie col-12 p-4 mt-4 rounded border border-light'>
+            <h2
+                className="text-peach"
                 style={{ borderBottom: '1px dotted #1a1a1a' }}
             >
                 Fridges
-            </h3>
-            <div className="flex-row my-4">
+            </h2>
+            <div className="overflow-auto p-4 t">
                 {fridge &&
                     fridge.map((fridge) => (
                         <div key={fridge._id} className="col-12 mb-3 pb-3">
-                            <div className="p-3 bg-warning  text-light rounded">
-                                <h5 className="card-header bg-primary">
+                            <div className="p-3 bg-light text-dark rounded">
+                                <h5 className="card-header">
                                     {fridge.name}
                                 </h5>
                                 {fridge.online ? (
                                     <Link 
-                                        className="text-link bg-primary text-light" to={`/fridges/${fridge._id}`}>
+                                        className="text-dpurple" to={`/fridges/${fridge._id}`}>
                                             Peek inside this fridge.
                                         </Link>
                                 ) : (

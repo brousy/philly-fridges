@@ -35,9 +35,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="bg-light flex-column justify-flex-start min-100-vh">
+      <div>
         <Header />
-        <div className="container">
+        {/* erased d-flex to make items container bigger across the page */}
+        <div className="container align-items-center justify-content-center overflow-auto">
           <Outlet />
         </div>
         <Footer />

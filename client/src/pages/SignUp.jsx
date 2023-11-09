@@ -72,7 +72,7 @@ const Signup = () => {
                 />
                 <input
                   className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
-                  placeholder="******"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}
