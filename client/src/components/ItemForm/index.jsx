@@ -69,8 +69,8 @@ const ItemForm = ({ name }) => {
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
 
-          <h2 className=" text-primary bg-warning">Add an Item to the Fridge</h2>
-            <div className="form-group bg-warning">
+          <h2 className=" text-primary ">Add an Item to the Fridge</h2>
+            <div className="form-group ">
               <label htmlFor="itemName">Name:</label>
               <input
                 type="text"
@@ -80,7 +80,7 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="form-group bg-warning">
+            <div className="form-group ">
               <label htmlFor="itemQuantity">Quantity:</label>
              <input
                 type="number"
@@ -123,7 +123,7 @@ const ItemForm = ({ name }) => {
                 False
               </label>
             </div>
-            <div className="form-group bg-warning">
+            <div className="form-group">
               <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
               <label
                 className='form-check-input' id='datePicker'>Expiration Date

@@ -80,6 +80,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  text-align: right;
 }
 button:hover {
   border-color: #646cff;
@@ -186,3 +187,6 @@ button:focus-visible {
   color: #fedc97;
 }
 
+.my-3{
+  padding: 50px;
+}
