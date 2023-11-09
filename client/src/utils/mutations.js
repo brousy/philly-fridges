@@ -31,31 +31,39 @@ export const ADD_FRIDGE = gql`
       name
       online
       username
-      }
     }
+  }
 `;
 
-
-
 export const ADD_ITEM = gql`
-    mutation addItem($itemName: String!, $itemQuantity: String!, $isFrozen: String!, $expiryDate: String, $itemUsername: String!, $itemFridgename: String!) {
-        addItem(itemName: $itemName, itemQuantity: $itemQuantity, isFrozen: $isFrozen, expiryDate: $expiryDate itemUsername: $itemUsername, itemFridgename: $itemFridgename) {
-            _id
-            itemName
-            itemQuantity
-            isFrozen
-            itemUsername
-            itemFridgename
-        }
+  mutation addItem($itemName: String!, $itemQuantity: String!, $isFrozen: String!, $expiryDate: String, $itemUsername: String!, $itemFridgename: String!) {
+    addItem(itemName: $itemName, itemQuantity: $itemQuantity, isFrozen: $isFrozen, expiryDate: $expiryDate, itemUsername: $itemUsername, itemFridgename: $itemFridgename) {
+      _id
+      itemName
+      itemQuantity
+      isFrozen
+      itemUsername
+      itemFridgename
     }
+  }
+`;
+
+export const TAKE_ONE_ITEM = gql`
+  mutation takeOneItem($itemId: ID!) {
+    takeOneItem(itemId: $itemId) {
+      _id
+      itemName
+      itemQuantity
+    }
+  }
 `;
 
 export const CHANGE_ITEM_QTY = gql`
-    mutation changeQty($itemId: ID!, $itemQty: String!) {
-        changeQty(itemId: $itemId, itemQuantity: $itemQty) {
-            _id
-            itemName
-            itemQuantity
-        }
+  mutation changeQty($itemId: ID!, $itemQty: String!) {
+    changeQty(itemId: $itemId, itemQuantity: $itemQty) {
+      _id
+      itemName
+      itemQuantity
     }
+  }
 `;
