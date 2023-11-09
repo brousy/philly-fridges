@@ -8,6 +8,7 @@ const ItemList = ({ items = [], onTakeOne }) => {
     };
   
     return (
+
       <>
         <h3 className="display-inline-block" style={{ borderBottom: '1px dotted #1a1a1a' }}>
           Items
@@ -25,6 +26,7 @@ const ItemList = ({ items = [], onTakeOne }) => {
                 </span>
                 <p className="card-body">{item.description}</p>
               </div>
+
             </div>
           ))}
         </div>

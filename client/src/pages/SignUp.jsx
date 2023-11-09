@@ -42,7 +42,7 @@ const Signup = () => {
     <main className="flex-row justify-center mb-4">
       <div className="bg-light col-12 col-lg-10 align-items-center">
         <div className="card bg-warning">
-          <h4 className="card-header bg-dark text-light p-2 align-center">
+          <h4 className="card-header bg-#00296B text-dark p-2 align-center">
             Sign Up
           </h4>
           <div className="card-body">
