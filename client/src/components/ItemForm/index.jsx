@@ -68,62 +68,70 @@ const ItemForm = ({ name }) => {
     <div>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
-          <h2>Add an Item to the Fridge</h2>
-          <div className="form-group">
-            <label htmlFor="itemName">Name:</label>
-            <input
-              type="text"
-              id="itemName"
-              name="itemName"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="itemQuantity">Quantity:</label>
-            <input
-              type="number"
-              id="itemQuantity"
-              name="itemQuantity"
-              value={formData.itemQuantity}
-              onChange={handleInputChange}
-            />
-            <span>Is Frozen?</span>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="isFrozen"
-              value="true"
-              id="flexRadioDefault1"
-              checked={formData.isFrozen === 'true'}
-              onChange={handleInputChange}
-            />
-            <label
-              className='form-check-label'
-              htmlFor="flexRadioDefault1"
-            >
-              True
-            </label>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="isFrozen"
-              value="false"
-              id="flexRadioDefault2"
-              checked={formData.isFrozen === 'false'}
-              onChange={handleInputChange}
-            />
-            <label
-              className='form-check-label'
-              htmlFor="flexRadioDefault2"
-            >
-              False
-            </label>
-            <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
-            <label
-              className='form-check-input' id='datePicker'>Expiration Date</label>
-            {error && <p className="error">{error.message}</p>}
-            <button type="submit">Add Item</button>
-          </div>
-        </form>
+
+          <h2 className=" text-primary bg-warning">Add an Item to the Fridge</h2>
+            <div className="form-group bg-warning">
+              <label htmlFor="itemName">Name:</label>
+              <input
+                type="text"
+                id="itemName"
+                name="itemName"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group bg-warning">
+              <label htmlFor="itemQuantity">Quantity:</label>
+             <input
+                type="number"
+                id="itemQuantity"
+                name="itemQuantity"
+                value={formData.itemQuantity}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <span>Is Frozen?</span>
+              <input
+                className="form-check-input"
+                type="radio"
+                name="isFrozen"
+                value="true"
+                id="flexRadioDefault1"
+                checked={formData.isFrozen === 'true'}
+                onChange={handleInputChange}
+              />
+              <label
+                className='form-check-label'
+                htmlFor="flexRadioDefault1"
+              >
+                True
+              </label>
+              <input
+                className="form-check-input"
+                type="radio"
+                name="isFrozen"
+                value="false"
+                id="flexRadioDefault2"
+                checked={formData.isFrozen === 'false'}
+                onChange={handleInputChange}
+              />
+              <label
+                className='form-check-label'
+                htmlFor="flexRadioDefault2"
+              >
+                False
+              </label>
+            </div>
+            <div className="form-group bg-warning">
+              <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+              <label
+                className='form-check-input' id='datePicker'>Expiration Date
+              </label>
+                {error && <p className="error">{error.message}</p>}
+             </div>
+             <button type="submit">Add Item</button>
+         </form>
       ) : (
         <p>You need to be logged in to add items to the fridge.</p>
       )}
