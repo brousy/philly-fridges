@@ -37,7 +37,7 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <Header />
-        <div className="container d-flex align-items-center justify-content-center overflow-auto">
+        <div className="container d-flex align-center justify-content-center overflow-auto">
           <Outlet />
         </div>
         <Footer />
