@@ -4,23 +4,18 @@
 
 }
 
-/* main{
-  height: 100vh;
-} */
-
-footer {
-
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-  color: white;
-  font-size: 25px;
-  height: 75px;
-  padding: 10px;
+ main{
+  height: 75vh;
 }
 
 header {
-  color: #00296B
+  background-image: url(./assets/images/kisspng-philadelphia-skyline-silhouette-skyline-silhouette-illustration-5b52d115d632f7.8651138115321541338774.png);
+}
+
+footer {
+  width: 100%;
+  bottom: 0;
+  padding: 8px;
 }
 
 .Site {
@@ -71,6 +66,8 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  text-decoration: underline;
+  text-shadow: #033f63 5px 5px 2px;
 }
 
 button {
@@ -103,5 +100,89 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.mainback {
+  background: linear-gradient(to bottom, #033f63, #033f63 25%, #b5b682);
+}
+
+.bg-rviolet{
+  background-color: #0b0033;
+}
+
+.bg-dpurple{
+  background-color: #370031;
+}
+
+.bg-claret{
+  background-color: #832232;
+}
+
+.bg-porange{
+  background-color: #ce8964;
+}
+
+.bg-mindaro{
+  background-color: #eaf27c;
+}
+
+.text-rviolet{
+  color: #0b0033;
+}
+
+.text-dpurple{
+  color: #370031;
+}
+
+.text-claret{
+  color: #832232;
+}
+
+.text-porange{
+  color: #ce8964;
+}
+
+.text-mindaro{
+  color: #eaf27c;
+}
+/* --------------------------- */
+.bg-idie{
+  background-color: #033f63;
+}
+
+.bg-carb{
+  background-color: #28666e;
+}
+
+.bg-camb{
+  background-color: #7c9885;
+}
+
+.bg-sage{
+  background-color: #b5b682;
+}
+
+.bg-peach{
+  background-color: #fedc97;
+}
+
+.text-idie{
+  color: #033f63;
+}
+
+.text-carb{
+  color: #28666e;
+}
+
+.text-camb{
+  color: #7c9885;
+}
+
+.text-sage{
+  color: #b5b682;
+}
+
+.text-peach{
+  color: #fedc97;
 }
 

@@ -9,37 +9,36 @@ const Header = () => {
 
   };
   return (
-    <header className="bg-primary text-dark mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="col-auto text-info" to="/">
-            <h1 className="m-0 text-warning">Philly Fridges</h1>
-          </Link>
-          <span className="m-0">Feeding our community.</span>
-        </div>
-        <div>
+    <header className="bg-idie mb-4 py-3 justify-space-between-lg">
+        <div className=''>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to={`/profiles/${Auth.getProfile().data.username}`} >
+              <Link className="btn m-2 text-light border-light" to={`/profiles/${Auth.getProfile().data.username}`} >
                 {Auth.getProfile().data.username}'s profile
               </Link >
-              <Link className="btn btn-lg btn-light m-2" to="/" onClick={logout} >
+              <Link className="btn m-2 text-light border-light" to="/" onClick={logout} >
                 Logout
               </Link >
             </>
           ) : (
 
             <>
-              <Link className="btn btn-lg btn-info btn-light m-2" to="/login">
+              <Link className="btn m-2 text-light border-light" to="/login">
                 Login
               </Link >
-              <Link  className="btn btn-lg btn-light m-2" to="/signup" >
+              <Link  className="btn m-2 text-light border-light" to="/signup" >
                 Signup
               </Link >
             </>
           )}
         </div>
-      </div>
+        <div className="text-center">
+          <Link className="col-auto" to="/">
+            <h1 className="m-0 text-peach ">Philly Fridges</h1>
+          </Link>
+          <span className="text-peach m-0">Feeding our community</span>
+        </div>
+        
     </header >
   );
 };
