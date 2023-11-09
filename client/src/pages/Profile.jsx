@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import FridgeList from '../components/FridgeList/fridgelist';
-import FridgeForm from '../components/FridgeForm';
+import FridgeForm from '../components/FridgeForm/fridgeform';
 import ItemList from '../components/ItemList';
 
 import { QUERY_USER } from '../utils/queries';
