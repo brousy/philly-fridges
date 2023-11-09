@@ -1,0 +1,17 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+//variable overrrides
+
+
+
+//color palette additions - custom colors 
+
+$theme-colors: (
+    "rviolet": #0b0033,
+    "dpurple": #370031,
+    "claret": #832232,
+    "porange": #ce8964,
+    "mindaro": #eaf27c
+)
