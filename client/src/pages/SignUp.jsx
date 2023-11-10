@@ -39,10 +39,10 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
+    <main className="d-flex justify-content-center mb-4">
       <div className="bg-light col-12 col-lg-10 align-items-center">
         <div className="card bg-warning">
-          <h4 className="card-header bg-#00296B text-dark p-2 align-center">
+          <h4 className="card-header bg-#00296B text-dark p-2 align-cente mx-auto">
             Sign Up
           </h4>
           <div className="card-body">
@@ -72,7 +72,7 @@ const Signup = () => {
                 />
                 <input
                   className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
-                  placeholder="******"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}
