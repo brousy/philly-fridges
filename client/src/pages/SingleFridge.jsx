@@ -25,7 +25,7 @@ const SingleFridge = () => {
         return <div>Loading...</div>;
     }
     return (
-        <div className=" bg-light">
+        <div className="single bg-light">
             <h3 className="card-header p-2 m-0">{fridge.name}</h3>
             <br />
             <div className="my-3">

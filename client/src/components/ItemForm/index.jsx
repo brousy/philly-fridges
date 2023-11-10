@@ -65,7 +65,7 @@ const ItemForm = ({ name }) => {
   };
 
   return (
-    <div>
+    <div className='single'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
 
