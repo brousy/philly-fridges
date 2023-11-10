@@ -31,9 +31,8 @@ const Profile = () => {
       <main>
         <div className="d-flex justify-center">
           <div className='row'>
-            <div className="col-12 col-lg-6">
-              <div className="card">
-                <h4 className="card-header bg-primary text-light p-2">User Fridges</h4>
+            <div className="col-12 col-lg-6 mt-2">
+              <div className="card bg-light">
                 <div className="row">
                   <div>
                     <FridgeList fridges={user.fridges} />
@@ -45,10 +44,9 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-lg-6">
-              <div className="card">
-                <h4 className="card-header bg-primary text-light p-2">User Items</h4>
-                <div className="card-body">
+            <div className="col-12 col-lg-6 mt-2">
+              <div className="card bg-light">
+                <div>
                   {loading ? (
                     <div>Loading...</div>) : (
                     <ItemList items={user.items} />

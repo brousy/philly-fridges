@@ -11,7 +11,7 @@ const ItemList = ({ items = [], onTakeOne }) => {
       >
         Items
       </h2>
-      <div className="m-4">
+      <div className="p-4">
         {items.map((item) => (
           <div key={item._id} className="col-12 mb-3 pb-3">
             <div className="p-3 bg-light text-dark rounded">
