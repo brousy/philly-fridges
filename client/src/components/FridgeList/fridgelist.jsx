@@ -19,7 +19,7 @@ const FridgeList = () => {
             >
                 Fridges
             </h2>
-            <div className="overflow-auto p-4 t">
+            <div className="overflow-auto p-4">
                 {fridge &&
                     fridge.map((fridge) => (
                         <div key={fridge._id} className="col-12 mb-3 pb-3">
