@@ -40,7 +40,7 @@ const Signup = () => {
 
   return (
     <main className="d-flex justify-content-center mb-4">
-      <div className="bg-light col-12 col-lg-10 align-items-center">
+      <div className="col-12 col-lg-10 align-items-center">
         <div className="card bg-warning">
           <h4 className="card-header bg-#00296B text-dark p-2 align-cente mx-auto">
             Sign Up
