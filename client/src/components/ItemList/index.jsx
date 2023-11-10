@@ -1,14 +1,15 @@
 const ItemList = ({ items = [], onTakeOne }) => {
-    if (!items.length) {
-      return <h3>No items yet</h3>;
-    }
-  
-    const handleTakeOne = (itemId) => {
-      onTakeOne(itemId);
-    };
-  
-    return (
+  if (!items.length) {
+    return <h3>No items yet</h3>;
+  }
+// Filter out items with quantity 0
+const filteredItems = items.filter((item) => item.itemQuantity > 0);
 
+if (filteredItems.length === 0) {
+  return <h3>No items available</h3>;
+}
+  const handleTakeOne = (itemId) => {
+    onTakeOne(itemId);
       <>
         <h3 className="display-inline-block" style={{ borderBottom: '1px dotted #1a1a1a' }}>
           Items
@@ -34,7 +35,7 @@ const ItemList = ({ items = [], onTakeOne }) => {
           ))}
         </div>
       </>
-    );
   };
+};
     
 export default ItemList;

@@ -4,8 +4,8 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
     Query: {
         items: async () => {
-            return Item.find({});
-        },
+            return Item.find({ itemQuantity: { $gt: 0 } });
+          },
         fridges: async () => {
             return Fridge.find().sort({ name: 1 });
         },
@@ -74,6 +74,17 @@ const resolvers = {
         deleteItem: async (parent, { itemId }) => {
             return Item.findByIdAndDelete({ _id: itemId });
         },
+        takeOneItem: async (parent, { itemId }) => {
+            const item = await Item.findById(itemId);
+            if (!item) {
+              throw new Error("Item not found");
+            }
+            if (item.itemQuantity > 0) {
+              item.itemQuantity -= 1;
+              await item.save();
+            }
+            return item;
+          },
         updateItem: async (parent, { itemId, name, quantity }) => {
             const item = await Item.findByIdAndUpdate(
                 { _id: itemId }, 
