@@ -18,6 +18,14 @@ header {
 
 .single{
   min-width: 100%;
+
+}
+
+.addIForm{
+ 
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #033f63;
 }
 
 footer {
@@ -28,7 +36,10 @@ footer {
 .addIlabel{
   font-size: 50px;
   margin-right: 20px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+
 .Site {
   display: flex;
   flex-direction: column;
