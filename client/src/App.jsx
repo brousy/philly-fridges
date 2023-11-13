@@ -38,7 +38,7 @@ function App() {
       <div>
         <Header />
         {/* erased d-flex to make items container bigger across the page */}
-        <div className="container content align-items-center justify-content-center overflow-auto">
+        <div className="d-flex container align-items-center justify-content-center overflow-auto">
           <Outlet />
         </div>
         <Footer />

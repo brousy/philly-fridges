@@ -4,7 +4,9 @@ const Home = () => {
 
     return (
         <main className="col-10 col-8-md col-6-lg">
-                <FridgeList />            
+            <div className="card bg-light">
+                <FridgeList />
+            </div>
         </main>
     );
 };

@@ -71,7 +71,7 @@ const ItemForm = ({ name }) => {
 
           <h2 className=" text-primary ">Add an Item to the Fridge</h2>
             <div className="form-group ">
-              <label htmlFor="itemName">Name:</label>
+              <label className='addIlabel' htmlFor="itemName">Name:</label>
               <input
                 type="text"
                 id="itemName"
@@ -81,7 +81,7 @@ const ItemForm = ({ name }) => {
               />
             </div>
             <div className="form-group ">
-              <label htmlFor="itemQuantity">Quantity:</label>
+              <label className='addIlabel' htmlFor="itemQuantity">Quantity:</label>
              <input
                 type="number"
                 id="itemQuantity"
@@ -91,7 +91,7 @@ const ItemForm = ({ name }) => {
               />
             </div>
             <div>
-              <span>Is Frozen?</span>
+              <span className='addIlabel'>Is Frozen?</span>
               <input
                 className="form-check-input"
                 type="radio"
@@ -102,7 +102,7 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
               <label
-                className='form-check-label'
+                className='addIlabel form-check-label'
                 htmlFor="flexRadioDefault1"
               >
                 True
@@ -117,17 +117,18 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
               <label
-                className='form-check-label'
+                className='addIlabel form-check-label'
                 htmlFor="flexRadioDefault2"
               >
                 False
               </label>
             </div>
             <div className="form-group">
-              <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+             
               <label
-                className='form-check-input' id='datePicker'>Expiration Date
-              </label>
+                className=' addIlabel form-check-input' id='datePicker'>Expiration Date
+              </label> 
+              <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
                 {error && <p className="error">{error.message}</p>}
              </div>
              <button type="submit">Add Item</button>

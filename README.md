@@ -8,7 +8,7 @@ Showcasing a React App with Authentication. MERN website that allows a user to c
 
 Please visit this website to see our application:
 
-[Deployed application](https://shiny-garbonzo-75c1ae74f81a.herokuapp.com/)
+[Deployed application](https://philly-fridges-cc29a10dcf3c.herokuapp.com/)
 [Github Repository](https://github.com/brousy)
 
 ## Table of Contents
