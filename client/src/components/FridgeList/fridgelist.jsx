@@ -7,6 +7,8 @@ const FridgeList = () => {
     const { loading, data } = useQuery(QUERY_FRIDGES);
     const fridge = data?.fridges || [];
 
+
+
     if (!fridge.length) {
         return <h3>No Fridges Available</h3>;
     }
@@ -33,11 +35,11 @@ const FridgeList = () => {
                                             Peek inside this fridge.
                                         </Link>
                                 ) : (
-                                    <>
+                                    <div>
                                     <span className="text-light">
                                         Fridge is currently offline.
                                     </span>
-                                    </>
+                                    </div>
                                 )}
                             </div>
                         </div>

@@ -10,7 +10,7 @@ type Fridge {
 type Item {
     _id: ID
     itemName: String
-    itemQuantity: String
+    itemQuantity: Int
     isFrozen: String
     addDate: String
     expiryDate: String
@@ -46,9 +46,9 @@ type Mutation {
     addFridge(name: String!, online: String, username: String!): Fridge
     updateFridge(name: String!, status: String!): Fridge
     deleteFridge(fridge: String!): Fridge
-    addItem(itemName: String!, itemQuantity: String!, isFrozen: String!, expiryDate: String, itemUsername: String!, itemFridgename: String!): Item
+    addItem(itemName: String!, itemQuantity: Int!, isFrozen: String!, expiryDate: String, itemUsername: String!, itemFridgename: String!): Item
     deleteItem(itemId: ID!): Item
-    updateItem(itemId: ID!, name: String!, quantity: String!): Item
+    updateItem(itemId: ID!, name: String!, quantity: Int!): Item
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     deleteUser(user: String!): User

@@ -17,7 +17,7 @@ const Footer = () => {
           </button>
         )}     
         <p>Maintained by brousy with    
-        <img className="inline-block p-1" src="/love.png" width="5%" ></img>  </p>
+        <img className="inline-block p-1" src="/love.png" width="20px" ></img>  </p>
       </div>
     </footer>
   );

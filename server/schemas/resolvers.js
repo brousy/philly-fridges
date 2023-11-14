@@ -85,14 +85,20 @@ const resolvers = {
             }
             return item;
           },
-        updateItem: async (parent, { itemId, name, quantity }) => {
+        updateItem: async (parent, { itemId, name, quantity }) => {            
             const item = await Item.findByIdAndUpdate(
                 { _id: itemId }, 
                 { $set: { itemName: name,
                 itemQuantity: quantity } },
                 { new: true }
             );
-            return item
+
+            if (item.itemQuantity <= 0) {
+                await Item.findByIdAndDelete(item._id)
+                return;
+            } 
+
+            return item;
         },
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });

@@ -66,14 +66,14 @@ const ItemForm = ({ name }) => {
   };
 
   return (
-    <div>
+    <div className='single addForm'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
-
-          <h2 className=" text-primary ">Add an Item to the Fridge</h2>
+          <h2 className=" text-peach ">Add an Item to the Fridge</h2>
             <div className="form-group ">
-              <label htmlFor="itemName">Name:</label>
+              <label className='text-peach addlabel' htmlFor="itemName">Name:</label>
               <input
+              className='addItemBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3'
                 type="text"
                 id="itemName"
                 name="itemName"
@@ -81,9 +81,10 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
             </div>
-            <div className="form-group ">
-              <label htmlFor="itemQuantity">Quantity:</label>
+            <div className="text-peach form-group ">
+              <label className='addlabel' htmlFor="itemQuantity">Quantity:</label>
              <input
+             className='addItemBox addItemBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3'
                 type="number"
                 id="itemQuantity"
                 name="itemQuantity"
@@ -92,9 +93,9 @@ const ItemForm = ({ name }) => {
               />
             </div>
             <div>
-              <span>Is Frozen?</span>
+              <span className='text-peach addlabel'>Is Frozen?</span>
               <input
-                className="form-check-input"
+                className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 form-check-input"
                 type="radio"
                 name="isFrozen"
                 value="true"
@@ -103,13 +104,13 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
               <label
-                className='form-check-label'
+                className='text-peach addlabel form-check-label'
                 htmlFor="flexRadioDefault1"
               >
                 True
               </label>
               <input
-                className="form-check-input"
+                className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 form-check-input"
                 type="radio"
                 name="isFrozen"
                 value="false"
@@ -118,25 +119,20 @@ const ItemForm = ({ name }) => {
                 onChange={handleInputChange}
               />
               <label
-                className='form-check-label'
+                className='text-peach addlabel form-check-label'
                 htmlFor="flexRadioDefault2"
               >
                 False
               </label>
             </div>
             <div className="form-group">
-              <DatePicker 
-              id="datePicker" 
-              selected={expiryDate} 
-              onChange={(date) => setExpiryDate(date)} 
-              name='expiryDate'
-              value={expiryDate}/>
               <label
-                className='form-check-input' id='datePicker'>Expiration Date
-              </label>
+                className='text-peach addlabel' id='datePicker'>Expiration Date:
+              </label> 
+              <DatePicker className=' addIBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3' id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
                 {error && <p className="error">{error.message}</p>}
              </div>
-             <button type="submit">Add Item</button>
+             <button className='content-right bg-dpurple text-light' type="submit">Add Item</button>
          </form>
       ) : (
         <p>You need to be logged in to add items to the fridge.</p>
