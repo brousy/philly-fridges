@@ -68,7 +68,6 @@ const ItemForm = ({ name }) => {
     <div className='single addForm'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
-
           <h2 className=" text-peach ">Add an Item to the Fridge</h2>
             <div className="form-group ">
               <label className='text-peach addlabel' htmlFor="itemName">Name:</label>
