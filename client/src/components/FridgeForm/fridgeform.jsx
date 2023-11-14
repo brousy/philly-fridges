@@ -65,14 +65,15 @@ const FridgeForm = () => {
     <div >
       <form onSubmit={handleFormSubmit}>
         <input
-          className="form-input"
+          className=" addItemBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
           placeholder="Fridge name"
           name="name"
           type="text"
           value={name}
           onChange={handleChange}
         />
-        <span>Is Online?</span>
+        <div className='break'/>
+        <span className='addFlabel'>Is Online?</span>
         <input
           className="form-check-input"
           type="radio"
@@ -83,13 +84,13 @@ const FridgeForm = () => {
           onChange={handleOnline}
         />
         <label
-          className='form-check-label'
+          className='addFlabel form-check-label'
           htmlFor="flexRadioDefault1"
         >
           True
         </label>
         <input
-          className="form-check-input"
+          className=" form-check-input"
           type="radio"
           name="isOnline"
           value="false"
@@ -98,13 +99,14 @@ const FridgeForm = () => {
           onChange={handleOnline}
         />
         <label
-          className='form-check-label'
+          className='addFlabel  form-check-label'
           htmlFor="flexRadioDefault2"
         >
           False
         </label>
+        <div className='break'/>
         <button
-          className="btn btn-block btn-primary"
+          className="content-right bg-dpurple text-light"
           type="submit"
         >
           Submit

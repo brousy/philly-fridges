@@ -61,7 +61,7 @@ const Login = (props) => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input p-2 m-2  bg-light-subtle border border-dark rounded-3"
+                  className="form-input p-2 m-2 password bg-light-subtle border border-dark rounded-3"
                   placeholder="password"
                   name="password"
                   type="password"
