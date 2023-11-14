@@ -48,6 +48,7 @@ const ItemForm = ({ name }) => {
       const { data } = await addItem({
         variables: {
           ...formData,
+          expiryDate,
           itemUsername: Auth.getProfile().data.username,
           itemFridgename: name,
         },
@@ -125,11 +126,14 @@ const ItemForm = ({ name }) => {
               </label>
             </div>
             <div className="form-group">
-             
               <label
                 className='text-peach addlabel' id='datePicker'>Expiration Date:
               </label> 
-              <DatePicker className=' addIBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3' id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+              <DatePicker className=' addIBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3' id="datePicker" 
+              selected={expiryDate} 
+              onChange={(date) => setExpiryDate(date)} 
+              name='expiryDate'
+              value={expiryDate} />
                 {error && <p className="error">{error.message}</p>}
              </div>
              <button className='content-right bg-dpurple text-light' type="submit">Add Item</button>
