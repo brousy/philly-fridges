@@ -37,8 +37,8 @@ const Profile = () => {
                   <div>
                     <FridgeList fridges={user.fridges} />
                   </div>
-                  <div className='card-body'>
-                    <h4 className="card-header bg-dark text-light p-2">Add a Fridge</h4>
+                  <div className='card-body addForm mt-1'>
+                    <h4 className="card-header text-light p-2">Add a Fridge</h4>
                     <FridgeForm />
                   </div>
                 </div>

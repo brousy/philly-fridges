@@ -65,73 +65,75 @@ const ItemForm = ({ name }) => {
   };
 
   return (
-    <div>
+    <div className='single addForm'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
-
-          <h2 className=" text-primary ">Add an Item to the Fridge</h2>
-          <div className="form-group ">
-            <label htmlFor="itemName">Name:</label>
-            <input
-              type="text"
-              id="itemName"
-              name="itemName"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group ">
-            <label htmlFor="itemQuantity">Quantity:</label>
-            <input
-              type="number"
-              id="itemQuantity"
-              name="itemQuantity"
-              value={formData.itemQuantity}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <span>Is Frozen?</span>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="isFrozen"
-              value="true"
-              id="flexRadioDefault1"
-              checked={formData.isFrozen === 'true'}
-              onChange={handleInputChange}
-            />
-            <label
-              className='form-check-label'
-              htmlFor="flexRadioDefault1"
-            >
-              True
-            </label>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="isFrozen"
-              value="false"
-              id="flexRadioDefault2"
-              checked={formData.isFrozen === 'false'}
-              onChange={handleInputChange}
-            />
-            <label
-              className='form-check-label'
-              htmlFor="flexRadioDefault2"
-            >
-              False
-            </label>
-          </div>
-          <div className="form-group">
-            <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
-            <label
-              className='form-check-label' htmlFor='datePicker'>Expiration Date
-            </label>
-            {error && <p className="error">{error.message}</p>}
-          </div>
-          <button type="submit">Add Item</button>
-        </form>
+          <h2 className=" text-peach ">Add an Item to the Fridge</h2>
+            <div className="form-group ">
+              <label className='text-peach addlabel' htmlFor="itemName">Name:</label>
+              <input
+              className='addItemBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3'
+                type="text"
+                id="itemName"
+                name="itemName"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="text-peach form-group ">
+              <label className='addlabel' htmlFor="itemQuantity">Quantity:</label>
+             <input
+             className='addItemBox addItemBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3'
+                type="number"
+                id="itemQuantity"
+                name="itemQuantity"
+                value={formData.itemQuantity}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div>
+              <span className='text-peach addlabel'>Is Frozen?</span>
+              <input
+                className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 form-check-input"
+                type="radio"
+                name="isFrozen"
+                value="true"
+                id="flexRadioDefault1"
+                checked={formData.isFrozen === 'true'}
+                onChange={handleInputChange}
+              />
+              <label
+                className='text-peach addlabel form-check-label'
+                htmlFor="flexRadioDefault1"
+              >
+                True
+              </label>
+              <input
+                className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3 form-check-input"
+                type="radio"
+                name="isFrozen"
+                value="false"
+                id="flexRadioDefault2"
+                checked={formData.isFrozen === 'false'}
+                onChange={handleInputChange}
+              />
+              <label
+                className='text-peach addlabel form-check-label'
+                htmlFor="flexRadioDefault2"
+              >
+                False
+              </label>
+            </div>
+            <div className="form-group">
+             
+              <label
+                className='text-peach addlabel' id='datePicker'>Expiration Date:
+              </label> 
+              <DatePicker className=' addIBox form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3' id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+                {error && <p className="error">{error.message}</p>}
+             </div>
+             <button className='content-right bg-dpurple text-light' type="submit">Add Item</button>
+         </form>
       ) : (
         <p>You need to be logged in to add items to the fridge.</p>
       )}
