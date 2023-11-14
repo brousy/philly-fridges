@@ -71,7 +71,7 @@ const ItemList = ({ id }) => {
                 <button className="content-right bg-dpurple text-center text-light" onClick={() => handleTakeOne(item._id, item.itemName, item.itemQuantity)}>Take One</button>
               </div>
               <p className="text-center">
-                User {' '}<span className='fw-bold'>{item.itemUsername}</span>{' '} added {' '} {item.itemName} expires on {item.expiryDate}
+                User {' '}<span className='fw-bold'>{item.itemUsername}</span>{' '} added {' '} {item.itemName}{' '}which expires on {item.expiryDate}
               </p>
             </div>
 
