@@ -23,7 +23,25 @@ footer {
   flex-direction: column;
   min-height: 100vh;
 }
-
+.password{
+  color: #0b0033;
+}
+.addFlabel{
+  font-size: 30px;
+  color: #fedc97;
+  margin-right: 20px;
+}
+.addForm{
+ 
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #033f63;
+}
+.addlabel{
+  font-size: 50px;
+  margin-right: 20px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
 .Site-content {
   flex: 1 0 auto;
   padding: var(--space) var(--space) 0;
