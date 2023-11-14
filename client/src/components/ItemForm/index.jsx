@@ -48,6 +48,7 @@ const ItemForm = ({ name }) => {
       const { data } = await addItem({
         variables: {
           ...formData,
+          expiryDate,
           itemUsername: Auth.getProfile().data.username,
           itemFridgename: name,
         },
@@ -124,7 +125,12 @@ const ItemForm = ({ name }) => {
               </label>
             </div>
             <div className="form-group">
-              <DatePicker id="datePicker" selected={expiryDate} onChange={(date) => setExpiryDate(date)} />
+              <DatePicker 
+              id="datePicker" 
+              selected={expiryDate} 
+              onChange={(date) => setExpiryDate(date)} 
+              name='expiryDate'
+              value={expiryDate}/>
               <label
                 className='form-check-input' id='datePicker'>Expiration Date
               </label>
