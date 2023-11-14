@@ -47,7 +47,7 @@ const ItemList = ({ id }) => {
     }
   };
 
-  if (!fridge.items.length) {
+  if (!fridge.items) {
     return <h3>No items available</h3>;
   }
   return (
