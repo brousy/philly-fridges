@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import FridgeList from '../components/FridgeList/fridgelist';
 import FridgeForm from '../components/FridgeForm/fridgeform';
-import ItemList from '../components/ItemList';
+import UserItems from '../components/UserItemList';
 
 import { QUERY_USER } from '../utils/queries';
 
@@ -49,7 +49,7 @@ const Profile = () => {
                 <div>
                   {loading ? (
                     <div>Loading...</div>) : (
-                    <ItemList items={user.items} />
+                    <UserItems items={user.items} />
                   )}
                 </div>
               </div>

@@ -1,53 +1,6 @@
-import { useQuery, useMutation } from '@apollo/client';
+const UserItems = ({ items }) => {
 
-import { UPDATE_ITEM } from '../../utils/mutations';
-import { QUERY_FRIDGE_ITEMS } from "../../utils/queries";
-
-
-
-const ItemList = ({ id }) => {
-
-  console.log( id )
-
-
-  const { loading, data } = useQuery(QUERY_FRIDGE_ITEMS, {
-    variables: { fridgeId: id },
-  });
-
-  const fridge = data?.fridgeItems || {};
-
-  console.log(fridge)
-
-  const [updateOne, { error }] = useMutation(UPDATE_ITEM
-    
-    , {
-    refetchQueries: [
-      QUERY_FRIDGE_ITEMS,
-      'getFridgeItems'
-    ]
-  }
-  
-  );
-
-  const handleTakeOne = async (itemId, name, quantity) => {
-
-    const newQty = quantity-1
-
-    try {
-      const items = await updateOne({
-        variables: {
-          itemId: itemId,
-          name: name,
-          quantity: newQty,
-        },
-      })
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  if (!fridge.items) {
+  if (!items) {
     return <h3>No items available</h3>;
   }
   return (
@@ -60,7 +13,7 @@ const ItemList = ({ id }) => {
         Items
       </h2>
       <div className="p-4">
-        {fridge.items.map((item) => (
+        {items.map((item) => (
           <div key={item._id} className="col-12 mb-3 pb-3">
             <div className="p-3 bg-light text-dark rounded">
               <div className="d-flex justify-content-between">
@@ -82,4 +35,4 @@ const ItemList = ({ id }) => {
   );
 };
 
-export default ItemList;
+export default UserItems;
