@@ -113,6 +113,7 @@ export const QUERY_USER = gql`
         itemQuantity
         addDate
         expiryDate
+        itemUsername
         itemFridgename
       }
     }

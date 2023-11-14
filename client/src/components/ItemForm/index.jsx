@@ -66,7 +66,7 @@ const ItemForm = ({ name }) => {
   };
 
   return (
-    <div className='single addForm'>
+    <div className='single addForm mt-2'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
           <h2 className=" text-peach ">Add an Item to the Fridge</h2>
