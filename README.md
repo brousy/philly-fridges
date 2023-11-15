@@ -4,7 +4,7 @@
 
 Phree Philly Phridge is a application that helps our community locate refridgerators in their respective neighborhoods, that contain food that is free for all. The Fridge Project places refrigerators in predominately public spaces where individuals can donate excess food and others can freely take what they need.  It operates on a mutual aid basis, relying on the collective efforts of volunteers and donors to stock the fridge and make it accessible to those facing food insecurity.
 
-Showcasing a React App with Authentication. MERN website that allows a user to create a login, add details of their fridges and food items, then mark the plant off as watered. MongoDB, Express, React, Node. Hosted on Heroku.
+Showcasing a React App with Authentication. MERN website that allows a user to create a login, add details of their fridges and food items, then remove a food item from the any respective fridge.. MongoDB, Express, React, Node. Hosted on Heroku.
 
 Please visit this website to see our application:
 
