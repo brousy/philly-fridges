@@ -31,14 +31,21 @@ footer {
   color: #fedc97;
   margin-right: 20px;
 }
+.signup{
+  width: 100%;
+}
+.signInput{
+  width: 100%;
+  margin: 5px;
+}
 .addForm{
  
   padding: 10px;
-  border-radius: 10px;
+  
   background-color: #033f63;
 }
 .addlabel{
-  font-size: 50px;
+  font-size: 35px;
   margin-right: 20px;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
