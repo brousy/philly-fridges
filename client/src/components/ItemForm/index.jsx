@@ -141,7 +141,7 @@ const ItemForm = ({ name }) => {
              <button className='content-right bg-dpurple text-light' type="submit">Add Item</button>
          </form>
       ) : (
-        <p>You need to be logged in to add items to the fridge.</p>
+        <p className='text-light'>You need to be logged in to add items to the fridge.</p>
       )}
     </div>
   );
