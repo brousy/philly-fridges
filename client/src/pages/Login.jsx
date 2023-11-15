@@ -53,7 +53,7 @@ const Login = (props) => {
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
-                  className="form-input p-2 m-2  bg-light-subtle border border-dark rounded-3"
+                  className="form-input p-2 m-2 text-dark bg-light-subtle border border-dark rounded-3"
                   placeholder="Your email"
                   name="email"
                   type="email"
