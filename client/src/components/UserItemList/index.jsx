@@ -26,7 +26,6 @@ const UserItems = ({ items }) => {
                 You added {' '} {item.itemName}{' '}which expires on {item.expiryDate}
               </p>
             </div>
-
           </div>
         ))}
       </div>

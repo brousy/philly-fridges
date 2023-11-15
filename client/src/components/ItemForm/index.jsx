@@ -15,7 +15,7 @@ const ItemForm = ({ name }) => {
   // Defines the state 
   const [formData, setFormData] = useState({
     itemName: '',
-    itemQuantity: '',
+    itemQuantity: 0,
     isFrozen: 'true'
   });
 
@@ -44,11 +44,12 @@ const ItemForm = ({ name }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    console.log(itemQuantity)
+
     try {
       const { data } = await addItem({
         variables: {
           ...formData,
-          expiryDate,
           itemUsername: Auth.getProfile().data.username,
           itemFridgename: name,
         },
@@ -56,7 +57,7 @@ const ItemForm = ({ name }) => {
       // clears form fields after user submits 
       setFormData({
         itemName: '',
-        itemQuantity: '',
+        itemQuantity: 0,
         isFrozen: '',
         expiryDate: ''
       });
@@ -88,7 +89,7 @@ const ItemForm = ({ name }) => {
                 type="number"
                 id="itemQuantity"
                 name="itemQuantity"
-                value={formData.itemQuantity}
+                value={formData.itemQuantity = parseInt(formData.itemQuantity)}
                 onChange={handleInputChange}
               />
             </div>
