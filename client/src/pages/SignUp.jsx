@@ -52,18 +52,19 @@ const Signup = () => {
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <div className="col-sm-2 col-form-label align-items-center">
+              <form className="" onSubmit={handleFormSubmit}>
+                <div className="signup col-sm-2 col-form-label align-items-center">
                 <input
-                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+                  className="signInput form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="Your username"
                   name="username"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
                 />
+                <div className="break"/>
                 <input
-                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+                  className="signInput form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="Your email"
                   name="email"
                   type="email"
@@ -71,7 +72,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
                 <input
-                  className="form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
+                  className="signInput form-input p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3"
                   placeholder="password"
                   name="password"
                   type="password"
@@ -80,11 +81,11 @@ const Signup = () => {
                 />
                 <div className="col-auto">
                   <span id="passwordHelpInline" className="form-text">
-                    Must be at least 8 characters long. 
+                    Password must be at least 8 characters long. 
                   </span>
                 </div>
                 <button
-                  className="btn btn-block btn-primary"
+                  className="content-right bg-dpurple text-light"
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >

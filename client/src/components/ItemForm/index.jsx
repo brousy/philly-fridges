@@ -66,7 +66,7 @@ const ItemForm = ({ name }) => {
   };
 
   return (
-    <div className='single addForm'>
+    <div className='single rounded addForm'>
       {Auth.loggedIn() ? (
         <form onSubmit={handleFormSubmit}>
           <h2 className=" text-peach ">Add an Item to the Fridge</h2>
@@ -134,7 +134,7 @@ const ItemForm = ({ name }) => {
               onChange={(date) => setExpiryDate(date)} 
               name='expiryDate'
               value={expiryDate} />
-                {error && <p className="error">{error.message}</p>}
+                {error && <p className="error text-warning">{error.message}</p>}
              </div>
              <button className='content-right bg-dpurple text-light' type="submit">Add Item</button>
          </form>
