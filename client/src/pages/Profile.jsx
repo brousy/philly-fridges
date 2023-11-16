@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import FridgeList from '../components/FridgeList/fridgelist';
 import FridgeForm from '../components/FridgeForm/fridgeform';
 import UserItems from '../components/UserItemList';
+import UserFridgeList from '../components/UserFridgeList';
 
 import { QUERY_USER } from '../utils/queries';
 
@@ -35,7 +36,7 @@ const Profile = () => {
               <div className="card bg-light">
                 <div className="row">
                   <div>
-                    <FridgeList fridges={user.fridges} />
+                    <UserFridgeList fridges={user.fridges} />
                   </div>
                   <div className='card-body rounded addForm m-3 mt-1'>
                     <h4 className="card-header text-light p-2">Add a Fridge</h4>
